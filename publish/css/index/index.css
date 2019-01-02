@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.cate-title, .cate-title a {
+	height: 40px;
+	line-height: 40px;
+	background-color: rgba(201,169,120,1);
+	color: #fff;
+}
+.cate-title { padding: 0 15px; text-align: left; }
+.cate-title h2 { margin: 0; padding: 0; border: 0; line-height: 40px; }
+
+
+/* This stylesheet have file position : /theme/bkkorea/skin/shop/bk-shop */
+/*.sct_wrap header:after {display:block;visibility:hidden;clear:both;content:""}*/

@@ -1,0 +1,80 @@
+<?php
+$sub_menu = '500300';
+include_once('./_common.php');
+
+auth_check($auth[$sub_menu], "r");
+
+$g5['title'] = '이벤트최신글 관리';
+include_once (G5_ADMIN_PATH.'/admin.head.php');
+
+$sql_common = " FROM {$g5['g5_shop_event_latest_table']} ";
+
+// 테이블의 전체 레코드수만 얻음
+$sql = " SELECT count(*) AS cnt " . $sql_common;
+$row = sql_fetch($sql);
+$total_count = $row['cnt'];
+
+$sql = "SELECT * $sql_common ORDER BY ev_id DESC ";
+$result = sql_query($sql);
+?>
+<style>
+.local_ov.local_ov01 { display: flex; width: 100%; flex-direction: row; justify-content: space-between; }
+</style>
+<div class="local_ov01 local_ov">
+       <span class="btn_ov01"><span class="ov_txt">전체 이벤트</span><span class="ov_num"> <?php echo $total_count; ?>건</span></span>
+</div>
+
+
+<div class="btn_fixed_top">
+    <a href="./itemeventlatestform.php" class="btn btn_01">이벤트 추가</a>
+</div>
+
+<div class="tbl_head01 tbl_wrap">
+    <table>
+    <caption><?php echo $g5['title']; ?> 목록</caption>
+    <thead>
+    <tr>
+        <th scope="col">이벤트번호</th>
+        <th>한 줄당 개수</th>
+        <th>라인 수</th>
+        <th scope="col">사용</th>
+        <th scope="col">관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    for ($i=0; $row=sql_fetch_array($result); $i++) {
+    ?>
+
+    <tr>
+        <td class="td_num"><?php echo $row['ev_id']; ?></td>
+        <td><?php echo $row['ev_latest_col']; ?></td>
+        <td><?php echo $row['ev_latest_row']; ?></td>
+        <td class="td_boolean"><?php echo $row['ev_use'] ? '<span class="txt_true">예</span>' : '<span class="txt_false">아니오</span>'; ?></td>
+        <td class="td_mng td_mng_l">
+            <a href="./itemeventlatestform.php?w=u&amp;ev_id=<?php echo $row['ev_id']; ?>" class="btn btn_03">수정</a>
+            <a href="./itemeventformupdate.php?w=d&amp;ev_id=<?php echo $row['ev_id']; ?>" onclick="return delete_confirm(this);" class="btn btn_02">삭제</a>
+        </td>
+    </tr>
+
+    <?php
+    }
+
+    if ($i == 0) {
+        echo '<tr><td colspan="5" class="empty_table">자료가 없습니다.</td></tr>';
+    }
+    ?>
+    </tbody>
+    </table>
+</div>
+
+<script>
+function itemeventwin(ev_id)
+{
+    window.open("./itemeventwin.php?ev_id="+ev_id, "itemeventwin", "left=10,top=10,width=500,height=600,scrollbars=1");
+}
+</script>
+
+<?php
+include_once (G5_ADMIN_PATH.'/admin.tail.php');
+?>

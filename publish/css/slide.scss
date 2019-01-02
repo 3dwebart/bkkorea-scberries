@@ -1,0 +1,222 @@
+// @import "compass";
+
+#bar {
+  width: 0%;
+  max-width: 100%;
+  height: 6px;
+  background-color: #F9DC09;
+}
+
+#progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+}
+
+.fa-play,
+.fa-pause {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: rgba(white, 0.6);
+  z-index: 100;
+  
+  &:hover {
+    color: white;
+  }
+}
+
+.fa-pause {
+  display: none;
+}
+
+.owl-carousel {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  height: 100vh;
+  overflow: hidden;
+  
+  .slide {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    
+    img {
+      width: 100%;
+    }
+    
+    .video {
+      
+      i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        cursor: pointer;
+        font-size: 3rem;
+        color: rgba(white, 0.6);
+        z-index: 100;
+        
+        &.fa-volume-off {
+          display: block;
+        }
+        &.fa-volume-up {
+          display: none;
+        }
+        
+        &:hover {
+          color: white;
+        }
+      }
+      
+      &.on {
+        i {
+          &.fa-volume-off {
+            display: none;
+          }
+          &.fa-volume-up {
+            display: block;
+          }
+        }
+      }
+    }
+    
+    .row {
+      position: relative;
+      max-width: 100%;
+      width: 100%;
+
+      .columns {
+        padding: 0;
+
+        &:first-child {
+          width: 97%;
+          // @include transition-property(all);
+          // @include transition-duration(0.3s);
+          // @include transition-timing-function(ease-in-out);
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          -webkit-transition-property: all;
+          transition-property: all;
+          -moz-transition-duration: 0.3s;
+          -o-transition-duration: 0.3s;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+          -moz-transition-timing-function: ease-in-out;
+          -o-transition-timing-function: ease-in-out;
+          -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;      
+        }
+
+        &:last-child {
+          position: absolute;
+          top: 0;
+          left: 97%;
+          overflow: hidden;
+          float: none;
+          height: 100%;
+          padding: 60px;
+          background-color: white;
+          -moz-transition-property: all;
+          -o-transition-property: all;
+          -webkit-transition-property: all;
+          transition-property: all;
+          -moz-transition-duration: 0.3s;
+          -o-transition-duration: 0.3s;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+          -moz-transition-timing-function: ease-in-out;
+          -o-transition-timing-function: ease-in-out;
+          -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+
+          i {
+            position: absolute;
+            display: block;
+            top: 8px;
+            left: 8px;
+            cursor: pointer;
+            padding: 10px;
+
+            &.fa-times {
+              display: none;
+            }
+            &.fa-long-arrow-left {
+              display: block;
+            }
+          }
+        }
+
+      }
+    }
+    
+    &.open {
+       .row {
+         .columns {
+
+           &:first-child {
+             width: 80%;
+             
+             &.wrap-video {
+              width: 97%;
+             }
+           }
+
+           &:last-child {
+             width: 40%;
+             left: 60%;
+
+             i {
+               &.fa-times {
+                display: block;
+               }
+               &.fa-long-arrow-left {
+                 display: none;
+               }
+             }
+           }
+         }
+       }
+    }
+    
+  }
+  
+}
+
+.owl-theme {
+  & .owl-controls {
+    position: absolute;
+    left: 45px;
+    bottom: 15px;
+    text-align: left;
+    & .owl-page span {
+      background-color: white;
+    }
+  }
+}
+
+.fluid-width-video-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+
+.fluid-width-video-wrapper {
+  & iframe, & object, & embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
