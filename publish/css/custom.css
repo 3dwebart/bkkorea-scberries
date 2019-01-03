@@ -1,5 +1,11 @@
 @charset "utf-8";
 /********** BIGIN :: common **********/
+/* BIGIN :: Title */
+#wrapper_title { margin-bottom: 30px; }
+#wrapper_title span { display: inline-block; position: relative; padding-bottom: 10px; }
+#wrapper_title span:before { content: ""; position: absolute; width: calc(100% + 10px); height: 2px; left: 0; bottom: 5px; background-color: rgba(201,169,120,1); }
+#wrapper_title span:after { content: ""; position: absolute; width: 90%; height: 1px; left: 0; bottom: 0px; background-color: rgba(201,169,120,.7); }
+/* END :: Title */
 * { font-family: 'Nanum Barun Gothic', sans-serif; }
 a { color: #333; }
 a:hover { text-decoration: none; }
@@ -266,6 +272,7 @@ legend { height: 0; }
 /********** END :: Custom form **********/
 /********** BIGIN :: Member Sign up **********/
 #fregister .cf-privacy-box { height: 150px; overflow-y: auto; }
+#fregister .privacy.cf-privacy-box { height: auto; overflow-y: auto; }
 #fregister .cf-privacy-box p { color: #333; border: 0; padding: 0; background-color: transparent; text-align: left; }
 #fregister .cf-privacy-box ol { margin: 15px 0 15px 30px; }
 #fregister .cf-privacy-box ol.index-order-list { list-style: decimal-leading-zero; }
@@ -286,3 +293,9 @@ input:-internal-autofill-previewed, input:-internal-autofill-selected, textarea:
 }
 .login-sns { background-color: transparent;}
 /********** END :: Member login **********/
+/********** BIGIN :: Privacy **********/
+#fregister_private table{width:100%;border-collapse:collapse}
+#fregister_private table caption {position:absolute;font-size:0;line-height:0;overflow:hidden}
+#fregister_private table th{background:#646982;width:33.33%;color:#fff;padding:10px;border:1px solid #555971}
+#fregister_private table td{border:1px solid #ddd;padding:10px;}
+/********** END :: Privacy **********/

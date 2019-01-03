@@ -316,7 +316,7 @@ $(function (){
 	<!-- 콘텐츠 시작 { -->
 	<div id="container" class="pb-5">
 		<div class="container">
-		<?php if ((!$bo_table || $w == 's' ) && !defined('_INDEX_')) { ?><div id="wrapper_title"><?php echo $g5['title'] ?></div><?php } ?>
+		<?php if ((!$bo_table || $w == 's' ) && !defined('_INDEX_')) { ?><div id="wrapper_title"><span><?php echo $g5['title'] ?></span></div><?php } ?>
 		<!-- 글자크기 조정 display:none 되어 있음 시작 { -->
 		<div id="text_size">
 			<button class="no_text_resize" onclick="font_resize('container', 'decrease');">작게</button>

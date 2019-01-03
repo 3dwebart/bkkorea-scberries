@@ -96,4 +96,9 @@
 		}
 	}
 	/* END :: all check checked change */
+	/* BIGIN :: if it's click, it's event dose not working  */
+	jQuery(document).on('click', '.must-not-click', function() {
+		return false;
+	});
+	/* END :: if it's click, it's event dose not working */
 })(jQuery);
