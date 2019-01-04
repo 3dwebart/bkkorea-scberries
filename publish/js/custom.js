@@ -101,4 +101,17 @@
 		return false;
 	});
 	/* END :: if it's click, it's event dose not working */
+	/* BIGIN :: if nothing information, it's hidden to information table */
+	var info_cnt = 0;
+	$(document).ready(function() {
+		jQuery('#sit_inf_open').hide();
+		jQuery('#sit_inf #sit_inf_open td').each(function() {
+			var thisText = jQuery(this).text();
+			if(thisText != '상품페이지 참고') {
+				jQuery(this).closest('table').show();
+			}
+		});
+		jQuery('#wrapper_title').insertAfter('#sct_location');
+	});
+	/* END :: if nothing information, it's hidden to information table */
 })(jQuery);

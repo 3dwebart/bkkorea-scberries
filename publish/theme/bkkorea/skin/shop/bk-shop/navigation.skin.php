@@ -1,15 +1,14 @@
 <?php
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 
-if ($ca_id)
-{
+if ($ca_id) {
     $navigation = $bar = "";
     $len = strlen($ca_id) / 2;
     for ($i=1; $i<=$len; $i++)
     {
         $code = substr($ca_id,0,$i*2);
 
-        $sql = " select ca_name from {$g5['g5_shop_category_table']} where ca_id = '$code' ";
+        $sql = " SELECT ca_name FROM {$g5['g5_shop_category_table']} WHERE ca_id = '$code' ";
         $row = sql_fetch($sql);
 
         $sct_here = '';
@@ -22,9 +21,9 @@ if ($ca_id)
 
         $navigation .= $bar.'<a href="./list.php?ca_id='.$code.'" class="'.$sct_here.' '.$sct_bg.'">'.$row['ca_name'].'</a>';
     }
-}
-else
+} else {
     $navigation = $g5['title'];
+}
 
 //if ($it_id) $navigation .= " > $it[it_name]";
 

@@ -1,6 +1,7 @@
 @charset "utf-8";
 /********** BIGIN :: common **********/
 /* BIGIN :: Title */
+.top-wrapper { position: relative; }
 #wrapper_title { margin-bottom: 30px; }
 #wrapper_title span { display: inline-block; position: relative; padding-bottom: 10px; }
 #wrapper_title span:before { content: ""; position: absolute; width: calc(100% + 10px); height: 2px; left: 0; bottom: 5px; background-color: rgba(201,169,120,1); }
