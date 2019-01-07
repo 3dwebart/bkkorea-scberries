@@ -1,8 +1,6 @@
 @charset "utf-8";
-
-/* ### 기본 스타일 커스터마이징 시작 ### */
-
-/* 버튼 */
+/* ########## BIGIN :: basic style customizing ############# */
+/* BIGIN :: button */
 .mbskin a.btn01 {}
 .mbskin a.btn01:focus, .mbskin .btn01:hover {}
 .mbskin a.btn02 {}
@@ -21,16 +19,16 @@
 .mbskin .win_btn input {}
 .mbskin .win_btn a {}
 .mbskin .win_btn a:focus, .mbskin .win_btn a:hover {}
-
-/* 게시판용 버튼 */
+/* END :: button */
+/* BIGIN :: board private button */
 .mbskin a.btn_b01 {}
 .mbskin a.btn_b01:focus, .mbskin .btn_b01:hover {}
 .mbskin a.btn_b02 {}
 .mbskin a.btn_b02:focus, .mbskin .btn_b02:hover {}
-.mbskin a.btn_admin {} /* 관리자 전용 버튼 */
+.mbskin a.btn_admin {} /* administrator private button */
 .mbskin a.btn_admin:focus, .mbskin a.btn_admin:hover {}
-
-/* 기본박스 */
+/* END :: board private button */
+/* BIGIN :: basic box */
 .mbskin{position: relative;margin:100px auto 0;border:1px solid #ddd;width:400px;background:#fff;text-align:center;
 }
 .mbskin:before,.mbskin:after{
@@ -50,10 +48,8 @@ position:absolute;z-index:-1;top:2%;bottom:0;left:10px;right:10px;
 .mbskin .frm_input{width:100%}
 .mbskin .btn_submit{width:100%;margin:10px 0 0;height:45px;font-weight:bold;font-size:1.25em}
 .mbskin  h1{margin: 60px 0 30px;font-size: 2em;}
-
-
-/* 기본테이블 */
-
+/* END :: basic box */
+/* BIGIN :: basic table */
 .mbskin .tbl_head01 {}
 .mbskin .tbl_head01 caption {}
 .mbskin .tbl_head01 thead th {}
@@ -65,8 +61,8 @@ position:absolute;z-index:-1;top:2%;bottom:0;left:10px;right:10px;
 .mbskin .tbl_head01 td {}
 .mbskin .tbl_head01 a {}
 .mbskin td.empty_table {}
-
-/* 폼 테이블 */
+/* END :: basic table */
+/* BIGIN :: form table */
 .mbskin table {}
 .mbskin caption {}
 .mbskin .frm_info {}
@@ -82,11 +78,11 @@ position:absolute;z-index:-1;top:2%;bottom:0;left:10px;right:10px;
 .mbskin .tbl_frm01 #captcha input {}
 */
 .mbskin .tbl_frm01 a {}
-
-/* 필수입력 */
+/* END :: form table */
+/* BIGIN :: required input */
 .mbskin .required, .mbskin textarea.required {}
-
-/* 테이블 항목별 정의 */
+/* END :: required input */
+/* BIGIN :: table itemized definition */
 .mbskin .td_board {}
 .mbskin .td_chk {}
 .mbskin .td_date {}
@@ -101,10 +97,10 @@ position:absolute;z-index:-1;top:2%;bottom:0;left:10px;right:10px;
 
 .mbskin .txt_active {}
 .mbskin .txt_expired {}
+/* END :: table itemized definition */
+/* ########## END :: basic style customizing ############# */
 
-/* ### 기본 스타일 커스터마이징 끝 ### */
-
-/* 회원가입 약관 */
+/* BIGIN :: membership sign up terms */
 #fregister p{text-align:center;color: #c7254e;background: #f9f2f4;padding:10px;border:1px solid #ecc7d2;margin:0 0 5px}
 #fregister section {;margin:10px auto 30px;border:1px solid #dbdbdb;position:relative;border-radius:3px 3px 0 0 ;
 -webkit-box-shadow:  0 1px 3px #eee;
@@ -118,12 +114,12 @@ box-shadow: 0 1px 3px #eee;
 #fregister_private div{padding:20px;background:#fff}
 #fregister_private table{width:100%;border-collapse:collapse}
 #fregister_private table caption {position:absolute;font-size:0;line-height:0;overflow:hidden}
-#fregister_private table  th{background:#646982;width:33.33%;color:#fff;padding:10px;border:1px solid #555971}
-#fregister_private table  td{border:1px solid #ddd;padding:10px;}
+#fregister_private table th{background:#646982;width:33.33%;color:#fff;padding:10px;border:1px solid #555971}
+#fregister_private table td{border:1px solid #ddd;padding:10px;}
 #fregister .btn_confirm{text-align:center;}
 #fregister .btn_confirm .btn_submit{height:50px;padding:0 40px;font-weight:bold;font-size:1.083em}
-
-/* 회원가입 입력 */
+/* END :: membership sign up terms */
+/* BIGIN :: membership sign up input */
 #register_form{background:#fff;padding:20px;margin-bottom:20px}
 #fregisterform #msg_certify {margin:5px 0 0;padding:5px;border:1px solid #dbecff;background:#eaf4ff;text-align:center}
 #fregisterform .frm_address {margin:5px 0 0}
@@ -136,9 +132,8 @@ box-shadow: 0 1px 3px #eee;
 #fregisterform .form_01 div{margin: 0 0 50px}
 #fregisterform .captcha{display:block;margin:5px 0 0}
 #fregisterform .reg_mb_img_file img{max-width:100%;height:auto}
-
-
-/* 회원가입 완료 */
+/* END :: membership sign up input */
+/* BIGIN :: membership sign up complete */
 #reg_result {padding:100px 0 40px;text-align:center;background:#fff}
 #reg_result h2{font-size:2em;margin:0 0 20px}
 #reg_result h2 strong{color:#ed6478}
@@ -150,13 +145,13 @@ box-shadow: 0 1px 3px #eee;
 #reg_result .reg_result_p{font-size:1.25em;margin:0 0 10px;}
 #reg_result .reg_result_p strong{color:#3497d9}
 #reg_result .btn_submit{padding: 0 30px;font-weight:bold;height:40px;line-height:40px;display:inline-block;margin:30px 0 0 ;font-size:1.083em}
-
-/* 아이디/비밀번호 찾기 */
+/* END :: membership sign up complete */
+/* BIGIN :: Find ID / Password */
 #find_info #mb_hp_label {display:inline-block;margin-left:10px}
 #find_info p {line-height:1.5em}
 #find_info #mb_email{margin:10px 0;}
-
-/* 로그인 */
+/* END :: Find ID / Password */
+/* BIGIN :: Login */
 #mb_login {margin-bottom:50px}
 #login_fs{padding:0 50px}
 #mb_login #login_fs .frm_input{margin:0 0 10px}
@@ -176,8 +171,8 @@ box-shadow: 0 1px 3px #eee;
 #mb_login_od_wr h2{font-size:1.25em;margin:20px 0 10px}
 #mb_login_od_wr .frm_input{margin:10px 0 0 }
 #mb_login_od_wr p{background:#f3f3f3;margin:20px 0 0 ;padding:15px 20px;line-height:1.5em}
-
-/* 쪽지 */
+/* END :: Login */
+/* BIGIN :: Memo */
 #memo_list .memo_name,#memo_list .memo_name .sv_wrap{font-weight:bold}
 #memo_list .memo_datetime{float:right;font-size:0.92em;color:#777;font-style:italic}
 #memo_list .memo_del{margin-left: 5px; color: #49857c;font-size: 15px;}
@@ -197,8 +192,8 @@ box-shadow: 0 1px 3px #eee;
 #memo_view p {padding:10px;border-top:1px solid #ddd;min-height:150px;height:auto !important;height:150px;background:#fff;line-height:1.8em}
 
 #memo_write textarea {height:100px}
-
-/* 스크랩 */
+/* END :: Memo */
+/* BIGIN :: Scrap */
 #scrap .scrap_tit{font-weight:bold;display:block;font-size:1.083em;margin-bottom:5px;line-height:1.3em}
 #scrap .scrap_cate{ display:block;color:#3598db ;font-size:0.92em;float:left}
 #scrap .scrap_datetime{;color:#777;font-style:italic;float:right}
@@ -208,7 +203,8 @@ box-shadow: 0 1px 3px #eee;
 #scrap_do textarea {height:100px}
 #scrap_do .scrap_tit{background:#f3f3f3;padding:10px 15px;font-size:1.083em;font-weight:bold}
 #scrap_do label{display:block;margin:0 0 5px;font-size:0.92em}
-/*포인트*/
+/* END :: Scrap */
+/* BIGIN :: Point */
 #point .point_top{line-height:15px;margin:0 0 5px}
 #point .point_top:after {display:block;visibility:hidden;clear:both;content:""}
 #point .point_tit{font-weight:bold;float:left;font-size:1.083em;display:block;}
@@ -220,8 +216,8 @@ box-shadow: 0 1px 3px #eee;
 #point .point_all span,#point .point_status span{float:right;}
 #point .point_status{background:#737373;border:0;color:#fff;font-weight:bold;font-size:1.083em}
 #point .point_status  span{margin-left:10px}
-
-/* 회원 비밀번호 확인 */
+/* END :: Point */
+/* BIGIN :: Confirm member password */
 #mb_confirm {}
 #mb_confirm h1 {margin:60px 0 30px;font-size:2em}
 #mb_confirm p {padding:0 20px 40px;border-bottom:1px solid #e9e9e9;font-size:1.083em;line-height:1.4em;color:#656565}
@@ -231,8 +227,8 @@ box-shadow: 0 1px 3px #eee;
 #mb_confirm label {letter-spacing:-0.1em}
 #mb_confirm_id {display:block;margin:5px 0 10px;font-weight:bold}
 #mb_confirm .confirm_id{font-size:0.92em;color:#666}
-
-/* 비밀글 비밀번호 확인 */
+/* BIGIN :: Confirm member password */
+/* BIGIN :: Confirm secret message password */
 #pw_confirm h1 {margin:60px 20px 30px;font-size:2em}
 #pw_confirm p {padding:0 20px 40px;border-bottom:1px solid #e9e9e9;font-size:1.083em;line-height:1.4em;color:#656565}
 #pw_confirm p strong {display:block;color:#3ca1ff;font-size:1.167em;margin:0 0 5px}
@@ -241,16 +237,16 @@ box-shadow: 0 1px 3px #eee;
 #pw_confirm label {letter-spacing:-0.1em}
 #pw_confirm_id {display:inline-block;margin-right:20px;font-weight:bold}
 #mb_confirm_id{}
-
-/* 폼메일 */
+/* END :: Confirm secret message password */
+/* BIGIN :: Form email */
 #formmail textarea {height:100px}
 #formmail .formmail_flie{position:relative}
 #formmail .formmail_flie .file_wr {border: 1px solid #ccc;background: #fff;color: #000;vertical-align: middle;border-radius: 3px;padding: 5px;height: 40px;margin: 0;}
 #formmail .lb_icon {position: absolute;top: 1px;left: 1px;border-radius: 3px 0 0 3px;height: 38px;line-height: 38px;width: 40px;background: #eee;text-align: center;color: #888;}
 #formmail .frm_file {padding-left: 50px;}
 #formmail .frm_info{color: #3497d9;font-size: 0.92em;}
-
-/* 자기소개 */
+/* END :: Form email */
+/* BIGIN :: About me */
 #profile h1 a{color:#fff}
 #profile table {margin-bottom:0}
 #profile table th{text-align:left;padding:10px;width:100px}
@@ -261,3 +257,4 @@ box-shadow: 0 1px 3px #eee;
 #profile .my_profile_img img{border-radius:50%;border:1px solid #aaa}
 #profile .profile_img img{border-radius:50%}
 #profile .profile_name .sv_wrap{font-weight:bold;text-align:left}
+/* END :: About me */
