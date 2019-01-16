@@ -2,10 +2,12 @@
 /********** BIGIN :: common **********/
 /* BIGIN :: Title */
 .top-wrapper { position: relative; }
-#wrapper_title { margin-bottom: 30px; }
+#wrapper_title { margin: 25px 0 10px 0; }
 #wrapper_title span { display: inline-block; position: relative; padding-bottom: 10px; }
+/*
 #wrapper_title span:before { content: ""; position: absolute; width: calc(100% + 10px); height: 2px; left: 0; bottom: 5px; background-color: rgba(201,169,120,1); }
 #wrapper_title span:after { content: ""; position: absolute; width: 90%; height: 1px; left: 0; bottom: 0px; background-color: rgba(201,169,120,.7); }
+*/
 /* END :: Title */
 * { font-family: 'Nanum Barun Gothic', sans-serif; }
 a { color: #333; }
@@ -202,6 +204,9 @@ a.btn_cancel { padding-top: 0; padding-bottom: 0; }
 .shop_icon { background-color: transparent; }
 /********** END :: Product list **********/
 /********** BOGON :: Detail page **********/
+#sit_ov_wrap {
+    border-top: 0;
+}
 /* - BIGIN :: buttons - */
 #sit_btn_buy, .btn_submit {
 	background: #3e3a39;
