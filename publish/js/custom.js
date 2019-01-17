@@ -111,7 +111,7 @@
 				jQuery(this).closest('table').show();
 			}
 		});
-		jQuery('#wrapper_title').insertAfter('#sct_location');
+		jQuery('#sct_location').insertAfter('#wrapper_title');
 	});
 	/* END :: if nothing information, it's hidden to information table */
 })(jQuery);

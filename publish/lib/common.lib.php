@@ -1363,7 +1363,7 @@ function sql_connect($host, $user, $pass, $db=G5_MYSQL_DB) {
             die('Connect Error: '.mysqli_connect_error());
         }
     } else {
-        $link = mysql_connect($host, $user, $pass);
+        $link = mysqli_connect($host, $user, $pass, $db);
     }
 
     return $link;
@@ -1376,7 +1376,7 @@ function sql_select_db($db, $connect) {
     if(function_exists('mysqli_select_db') && G5_MYSQLI_USE)
         return @mysqli_select_db($connect, $db);
     else
-        return @mysql_select_db($db, $connect);
+        return @mysqli_select_db($connect, $db);
 }
 
 function sql_set_charset($charset, $link=null) {
@@ -1389,7 +1389,7 @@ function sql_set_charset($charset, $link=null) {
     if(function_exists('mysqli_set_charset') && G5_MYSQLI_USE) {
         mysqli_set_charset($link, $charset);
     } else {
-        mysql_query(" set names {$charset} ", $link);
+        mysqli_query(" set names {$charset} ", $link);
     }
 }
 // mysqli_query 와 mysqli_error 를 한꺼번에 처리
@@ -1417,9 +1417,9 @@ function sql_query($sql, $error=G5_DISPLAY_SQL_ERROR, $link=null) {
         }
     } else {
         if ($error) {
-            $result = @mysql_query($sql, $link) or die("<p>$sql<p>" . mysql_errno() . " : " .  mysql_error() . "<p>error file : {$_SERVER['SCRIPT_NAME']}");
+            $result = @mysqli_query($link, $sql) or die("<p>$sql<p>" . mysqli_errno() . " : " .  mysqli_error() . "<p>error file : {$_SERVER['SCRIPT_NAME']}");
         } else {
-            $result = @mysql_query($sql, $link);
+            $result = @mysqli_query($link, $sql);
         }
     }
 
@@ -1444,7 +1444,7 @@ function sql_fetch_array($result) {
     if(function_exists('mysqli_fetch_assoc') && G5_MYSQLI_USE)
         $row = @mysqli_fetch_assoc($result);
     else
-        $row = @mysql_fetch_assoc($result);
+        $row = @mysqli_fetch_assoc($result);
 
     return $row;
 }
@@ -1455,7 +1455,7 @@ function sql_free_result($result) {
     if(function_exists('mysqli_free_result') && G5_MYSQLI_USE) {
         return mysqli_free_result($result);
     } else {
-        return mysql_free_result($result);
+        return mysqli_free_result($result);
     }
 }
 
@@ -1477,7 +1477,7 @@ function sql_insert_id($link=null) {
     if(function_exists('mysqli_insert_id') && G5_MYSQLI_USE) {
         return mysqli_insert_id($link);
     } else {
-        return mysql_insert_id($link);
+        return mysqli_insert_id($link);
     }
 }
 
@@ -1485,7 +1485,7 @@ function sql_num_rows($result) {
     if(function_exists('mysqli_num_rows') && G5_MYSQLI_USE) {
         return mysqli_num_rows($result);
     } else {
-        return mysql_num_rows($result);
+        return mysqli_num_rows($result);
     }
 }
 
@@ -1506,9 +1506,9 @@ function sql_field_names($table, $link=null){
         }
     } else {
         $i = 0;
-        $cnt = mysql_num_fields($result);
+        $cnt = mysqli_num_fields($result);
         while($i < $cnt) {
-            $field = mysql_fetch_field($result, $i);
+            $field = mysqli_fetch_field($result, $i);
             $columns[] = $field->name;
             $i++;
         }
@@ -1526,7 +1526,7 @@ function sql_error_info($link=null) {
     if(function_exists('mysqli_error') && G5_MYSQLI_USE) {
         return mysqli_errno($link) . ' : ' . mysqli_error($link);
     } else {
-        return mysql_errno($link) . ' : ' . mysql_error($link);
+        return mysqli_errno($link) . ' : ' . mysqli_error($link);
     }
 }
 
@@ -1539,7 +1539,7 @@ function get_table_define($table, $crlf="\n") {
 
     $sql = 'SHOW FIELDS FROM ' . $table;
     $result = sql_query($sql);
-    while ($row = sql_fetch_array($result))
+    while ($row = sql_fetchi_array($result))
     {
         $schema_create .= '    ' . $row['Field'] . ' ' . $row['Type'];
         if (isset($row['Default']) && $row['Default'] != '')         {
@@ -1908,7 +1908,7 @@ function sql_real_escape_string($str, $link=null) {
         return mysqli_real_escape_string($link, $str);
     }
 
-    return mysql_real_escape_string($str, $link);
+    return mysqli_real_escape_string($link, $str);
 }
 
 function escape_trim($field) {
@@ -2273,7 +2273,7 @@ class html_process {
             sql_query(" DELETE FROM {$g5['login_table']} WHERE lo_datetime < '".date("Y-m-d H:i:s", G5_SERVER_TIME - (60 * $config['cf_login_minutes']))."' ");
 
             // 부담(overhead)이 있다면 테이블 최적화
-            //$row = sql_fetch(" SHOW TABLE STATUS FROM `$mysql_db` LIKE '$g5['login_table']' ");
+            //$row = sql_fetch(" SHOW TABLE STATUS FROM `$mysqli_db` LIKE '$g5['login_table']' ");
             //if ($row['Data_free'] > 0) sql_query(" OPTIMIZE TABLE $g5['login_table'] ");
         }
 

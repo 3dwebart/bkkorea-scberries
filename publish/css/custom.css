@@ -103,8 +103,9 @@ a.btn_cancel { padding-top: 0; padding-bottom: 0; }
 .custom-checkbox input { display: none;  }
 .custom-checkbox .box { position: relative; display: block; width: 18px; height: 18px; border: 1px solid #333333; transition: all .5s ease; }
 .custom-checkbox .box:after { position: absolute; content: "\2713"; font-family: 'Nanum Barun Gothic', sans-serif; font-size: 0; color: rgba(255, 55,150,0); top: 14px; left: 12px; transition: all .5s ease; }
-.custom-checkbox input:checked + .custom-checkbox .box:after, .custom-checkbox .box:after + .custom-checkbox input:checked { font-size: 40px; color: rgba(255, 55,150,1); top: -24px; left: 2px; transition: all .5s ease; }
-.custom-checkbox .text { padding: 0 15px; }
+.custom-checkbox input:checked + .box:after { font-size: 40px; color: rgba(255, 55,150,1); top: -24px; left: 2px; transition: all .5s ease; }
+.custom-checkbox input.custom-chk:checked + .box:after { top: -9px;  }
+.custom-checkbox .text { padding: 0 7px; }
 /* END :: Components */
 
 #tnb, #tnb ul, #hd, #hd_wrapper, #hd_menu, #wrapper, #container, #ft, #ft .ft_wr { width: 100%; min-width: 100% }

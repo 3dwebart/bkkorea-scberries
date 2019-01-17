@@ -1,0 +1,59 @@
+@charset "utf-8";
+.partners-wrap {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.partners-wrap *[class^="col-"] > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 150px;
+}
+.eve-info { padding: 50px 0; background-color: #efefef; }
+.sct_wrap .simply-scroll,
+.sct_wrap .simply-scroll .simply-scroll-clip {
+    width: 100%;
+    height: 150px;
+}
+.col-custom {
+    -ms-flex: 0 0 12.5%;
+    flex: 0 0 12.5%;
+    max-width: 12.5%;
+}
+
+#instaPics {
+	max-width: 100%;
+	overflow: hidden;
+}
+.insta-box {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	float: left;
+	margin: 4px;
+	border: 1px solid #ddd;
+}
+.image-layer {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+.image-layer img {
+	max-width: 100%;
+}
+.caption-layer {
+	display: none;
+	position: absolute;
+	top: 0;
+	background: rgba(255,255,255,0.8);
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 10px;
+	color: #333;
+}
+.insta-likes {
+	float: right;
+}
+
