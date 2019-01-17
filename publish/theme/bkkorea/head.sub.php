@@ -99,17 +99,22 @@ if (defined('_SHOP_')) {
 <script src="<?php echo G5_JS_URL ?>/owl-tube.min.js"></script>
 <!-- END :: OWL Carousel JavaScript -->
 <link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/custom.css">
+<?php if(G5_IS_MOBILE) { ?>
+<link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/custom_mobile.css">
+<?php } ?>
 <?php
 if(defined('_INDEX_')) { // index에서만 실행
-	echo '<link rel="stylesheet" href="'.G5_CSS_URL.'/index/index.css">';
+	echo '<link rel="stylesheet" href="'.G5_CSS_URL.'/index/index.css">'.PHP_EOL;
 }
 
 /* BIGIN :: IE private CSS */
 $userAgent = $_SERVER["HTTP_USER_AGENT"];
-if ( preg_match("/MSIE*/", $userAgent) ) {
-	echo '<link rel="stylesheet" href="'.G5_CSS_URL.'/ie.css">';
-} else if( preg_match("/^Trident/", $userAgent &&  preg_match("/^rv:11.0/", $userAgent &&  reg_match("/^Gecko/", $userAgent))) ) {
-	echo '<link rel="stylesheet" href="'.G5_CSS_URL.'/ie.css">';
+
+if ( preg_match("/MSIE*/", $userAgent) || ( preg_match("/Trident*/", $userAgent) && preg_match("/rv:11.0*/", $userAgent) &&  preg_match("/Gecko*/", $userAgent) ) ) {
+	echo '<link rel="stylesheet" href="'.G5_CSS_URL.'/ie.css">'.PHP_EOL;
+	$img_mine = '.png';
+} else {
+	$img_mine = '';
 }
 /* END :: IE private CSS */
 if(G5_IS_MOBILE) {
@@ -120,6 +125,10 @@ if(!defined('G5_IS_ADMIN'))
 ?>
 </head>
 <body<?php echo isset($g5['body_script']) ? $g5['body_script'] : ''; ?>>
+<script>
+	var userAgent = "<?php echo $userAgent; ?>";
+	console.log();
+</script>
 <?php
 if ($is_member) { // 회원이라면 로그인 중이라는 메세지를 출력해준다.
 	$sr_admin_msg = '';

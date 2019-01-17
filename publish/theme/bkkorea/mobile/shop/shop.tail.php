@@ -54,6 +54,7 @@ if ($config['cf_analytics']) {
 ?>
 
 <script src="<?php echo G5_JS_URL; ?>/sns.js"></script>
+<script src="<?php echo G5_THEME_MSHOP_URL; ?>/js/mobile-custom.js"></script>
 
 <?php
 include_once(G5_THEME_PATH.'/tail.sub.php');

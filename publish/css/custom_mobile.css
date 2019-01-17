@@ -1,3 +1,52 @@
 @charset "utf-8";
 /********** BIGIN :: common **********/
 /* BIGIN :: Title */
+
+#hd_wr.mobile-header { display: flex; align-content: center; justify-content: space-between; }
+
+#hd_wr.mobile-header > * { display: flex; align-items: center; position: relative; }
+
+#hd #logo {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 0;
+    align-content: center;
+}
+
+#btn_hdcate { position: static; background-color: transparent; border: 0; }
+#btn_hdcate { position: static; }
+
+#hd_sch2 .sch_submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 35px;
+    border: 0;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    background: none;
+    font-size: 15px;
+    color: #333;
+}
+#hd_sch2 h2 {
+    position: absolute;
+    font-size: 0;
+    text-indent: -9999em;
+    line-height: 0;
+    overflow: hidden;
+}
+#hd_sch2 #sch_str2 {
+    width: 100%;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    padding-right: 40px;
+    color: #000;
+}
+#hd_wr.mobile-header .hidden-search {
+	position: absolute;
+	top: 100%;
+	right: 15px;
+}

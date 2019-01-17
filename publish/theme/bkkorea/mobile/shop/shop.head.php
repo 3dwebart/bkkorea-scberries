@@ -34,16 +34,25 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         <li><a href="<?php echo G5_SHOP_URL; ?>/mypage.php">마이페이지</a></li>
     </ul>
 -->
-    <div id="hd_wr">
+    <div id="hd_wr" class="mobile-header">
+	    <button type="button" id="btn_hdcate"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">분류</span></button>
         <div id="logo"><a href="<?php echo G5_SHOP_URL; ?>/"><img src="<?php echo G5_DATA_URL; ?>/common/mobile_logo_img" alt="<?php echo $config['cf_title']; ?> 메인"></a></div>
-        <div id="hd_btn">
-            <button type="button" id="btn_hdcate"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">분류</span></button>
-            <a href="<?php echo G5_SHOP_URL; ?>/cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="sound_only">장바구니</span><span class="cart-count"><?php echo get_boxcart_datas_count(); ?></span></a>
-
+        <div>
+	        <a href="#" class="mobile-search"><i class="fa fa-search"></i></a>
+        	<a href="<?php echo G5_SHOP_URL; ?>/cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="sound_only">장바구니</span><span class="cart-count"><?php echo get_boxcart_datas_count(); ?></span></a>
         </div>
+        <form name="frmsearch1" action="http://scberries.cafe24.com/shop/search.php" onsubmit="return search_submit(this);" style="display: none;" class="hidden-search">
+	        <aside id="hd_sch2">
+	            <div class="sch_inner">
+	                <h2>상품 검색</h2>
+	                <label for="sch_str" class="sound_only">상품명<strong class="sound_only"> 필수</strong></label>
+	                <input type="text" name="q" value="베리" id="sch_str2" required="" class="frm_input" placeholder="검색어를 입력해주세요">
+	                <button type="submit" value="검색" class="sch_submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+	            </div>
+	        </aside>
+        </form>
     </div>
     <?php include_once(G5_THEME_MSHOP_PATH.'/category.php'); // 분류 ?>
-
 
     <script>
     $( document ).ready( function() {
