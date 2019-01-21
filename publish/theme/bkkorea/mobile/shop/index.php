@@ -8,31 +8,41 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 
 <script src="<?php echo G5_JS_URL; ?>/swipe.js"></script>
 <script src="<?php echo G5_JS_URL; ?>/shop.mobile.main.js"></script>
+<!--
 <script src="<?php echo G5_THEME_MSHOP_URL; ?>/js/bootstrap-swipe-carousel.min.js"></script>
-<img src="<?php echo G5_IMG_URL; ?>/main-slide/mobile/1.png" alt="" class="img-fluid" />
 
-<div id="carouselExampleIndicators" class="carousel slide my-carousel" data-ride="carousel">
+<script src="<?php echo G5_THEME_MSHOP_URL; ?>/js/jquery.mobile.min.js"></script>
+-->
+<div id="cafeMarketCarousel" class="carousel slide my-carousel" data-ride="carousel">
 	<ol class="carousel-indicators">
-		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		<li data-target="#cafeMarketCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#cafeMarketCarousel" data-slide-to="1"></li>
+		<li data-target="#cafeMarketCarousel" data-slide-to="2"></li>
+		<li data-target="#cafeMarketCarousel" data-slide-to="3"></li>
+		<li data-target="#cafeMarketCarousel" data-slide-to="4"></li>
 	</ol>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<img class="d-block w-100" src="https://picsum.photos/1920/1080/?random" alt="First slide">
+			<img class="d-block w-100" src="<?php echo G5_IMG_URL.'/main-slide/mobile/1.png'; ?>" alt="First slide">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="https://picsum.photos/1921/1080/?random" alt="Second slide">
+			<img class="d-block w-100" src="<?php echo G5_IMG_URL.'/main-slide/mobile/2.png'; ?>" alt="Second slide">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="https://picsum.photos/1922/1080/?random" alt="Third slide">
+			<img class="d-block w-100" src="<?php echo G5_IMG_URL.'/main-slide/mobile/3.png'; ?>" alt="Second slide">
+		</div>
+		<div class="carousel-item">
+			<img class="d-block w-100" src="<?php echo G5_IMG_URL.'/main-slide/mobile/4.png'; ?>" alt="Second slide">
+		</div>
+		<div class="carousel-item">
+			<img class="d-block w-100" src="<?php echo G5_IMG_URL.'/main-slide/mobile/5.png'; ?>" alt="Second slide">
 		</div>
 	</div>
-	<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+	<a class="carousel-control-prev" href="#cafeMarketCarousel" role="button" data-slide="prev">
 		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 		<span class="sr-only">Previous</span>
 	</a>
-	<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+	<a class="carousel-control-next" href="#cafeMarketCarousel" role="button" data-slide="next">
 		<span class="carousel-control-next-icon" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 	</a>
@@ -113,6 +123,26 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
         <?php echo latest('theme/shop_basic', 'notice', 3, 30); ?>
     </section>
     -->
+<script>
+/*
+(function() {
+	$(".carousel-inner").swiperight(function() {  
+		$(this).parent().carousel('prev');  
+	});  
+	$(".carousel-inner").swipeleft(function() {  
+		$(this).parent().carousel('next');  
+	});
+})(jQuery);
+*/
+new Swiper( '.my-carousel' );
+/*
+const carouselEl = $('.my-carousel');
+// Bootstrap carousel needs to be loaded first
+carouselEl.carousel().swipeCarousel({
+	sensitivity: 'high' // low, medium or high
+});
+*/
+</script>
 <?php
 include_once(G5_THEME_MSHOP_PATH.'/shop.tail.php');
 ?>

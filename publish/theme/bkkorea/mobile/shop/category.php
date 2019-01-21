@@ -17,7 +17,7 @@ function get_mshop_category($ca_id, $len)
 
 <div id="category" class="menu">
     <button type="button" class="menu_close"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">카테고리닫기</span></button>
-    <div class="cate_bg"></div>
+    <div class="cate-menu-bg"></div>
     <div class="menu_wr">
         <?php echo outlogin('theme/shop_basic'); // 외부 로그인 ?>
                
@@ -158,6 +158,7 @@ function get_mshop_category($ca_id, $len)
         </ul>
     </div>
 </div>
+<!-- <div class="cate_bg"></div> -->
 <script>
 $(function (){
 

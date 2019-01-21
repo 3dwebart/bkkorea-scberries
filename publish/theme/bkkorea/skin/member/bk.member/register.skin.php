@@ -30,7 +30,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<fieldset class="fregister_agree">
 			<label for="agree11" class="custom-checkbox flex-end">
 				<span class="text">회원가입약관의 내용에 동의합니다.</span>
-				<input type="checkbox" name="agree" value="1" id="agree11" class="chk" />
+				<input type="checkbox" name="agree"  value="1"  id="agree11" class="chk" />
 				<span class="box"></span>
 			</label>
 		</fieldset>
@@ -312,7 +312,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<fieldset class="fregister_agree">
 			<label for="agree21" class="custom-checkbox flex-end">
 				<span class="text">개인정보처리방침안내의 내용에 동의합니다.</span>
-				<input type="checkbox" name="agree2" value="1" id="agree21" class="chk" />
+				<input type="checkbox" name="agree2"  value="1"  id="agree21" class="chk" />
 				<span class="box"></span>
 			</label>
 		</fieldset>

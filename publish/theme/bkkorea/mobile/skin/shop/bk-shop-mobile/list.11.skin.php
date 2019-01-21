@@ -41,7 +41,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
         if ($this->css) {
             echo "<ul id=\"sct_wrap\" class=\"{$this->css}\">\n";
         } else {
-            echo "<ul id=\"sct_wrap\" class=\"sct ".$ul_sct_class."\">\n";
+            echo "<ul id=\"sct_wrap\" class=\"sct item-list-ul ".$ul_sct_class."\">\n";
         }
     }
 
@@ -142,6 +142,17 @@ jQuery(function($){
         } else {
             shop_list_type_fn("list");
         }
+    });
+    var i = 1;
+    jQuery('#sct_ct_1 ul li').each(function() {
+	    if(i % 2 != 0) {
+		    var l = jQuery(this).height();
+		    var r = jQuery('#sct_ct_1 ul li').eq(i).height();
+		    var maxH = Math.max(l,r);
+		    jQuery(this).height(maxH);
+		    jQuery('#sct_ct_1 ul li').eq(i).height(maxH);
+	    }
+	    i++;
     });
 });
 </script>

@@ -413,23 +413,21 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0
         <li id="sit_dvex">
             <h2>배송/교환정보</h2>
             <div id="sit_dvr">
-                <h3>배송정보</h3>
-
-                <?php echo conv_content($default['de_baesong_content'], 1); ?>
+                <h3>배송정보 및 교횐 반품</h3>
+                <?php // echo conv_content($default['de_baesong_content'], 1); ?>
             </div>
             <!-- } 배송정보 끝 -->
             <?php } ?>
 
 
-            <?php if ($default['de_change_content']) { // 교환/반품 내용이 있다면 ?>
+            <?php /* if ($default['de_change_content']) { // 교환/반품 내용이 있다면 ?>
             <!-- 교환/반품 시작 { -->
             <div id="sit_ex" >
                 <h3>교환/반품</h3>
-
                 <?php echo conv_content($default['de_change_content'], 1); ?>
             </div>
             <!-- } 교환/반품 끝 -->
-            <?php } ?>
+            <?php } */ ?>
         </li>
     </ul>
 </div>

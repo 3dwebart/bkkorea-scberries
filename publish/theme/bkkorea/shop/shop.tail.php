@@ -22,7 +22,7 @@ $admin = get_admin("super");
         <div class="ft_menu">
             <div class="container">
                 <ul class="ft_ul">
-                    <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company">회사소개</a></li>
+                    <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company" class="must-not-click">회사소개</a></li><!--/* 임시로 링크,를 막음 : 2019-01-02 */-->
                     <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision">서비스이용약관</a></li>
                     <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy">개인정보처리방침</a></li>
                     <li><a href="<?php echo get_device_change_url(); ?>">모바일버전</a></li>
@@ -53,7 +53,7 @@ $admin = get_admin("super");
                 <div class="col-3">
                     <div class="ft_cs">
                         <h2>고객센터</h2>
-                        <strong>02-123-1234</strong>
+                        <strong><?php echo $default['de_admin_company_tel']; ?></strong>
                         <p>월-금 am 9:00 - pm 05:00<br>점심시간 : am 12:00 - pm 01:00</p>
                     </div>
                 </div>
