@@ -73,6 +73,7 @@ var g5_cookie_domain = "<?php echo G5_COOKIE_DOMAIN ?>";
 -->
 <script
   src="<?php echo G5_JS_URL ?>/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="<?php echo G5_JS_URL ?>/popper.min.js"></script>
 <script src="<?php echo G5_JS_URL ?>/bootstrap.min.js"></script>
 <?php
 if (defined('_SHOP_')) {
