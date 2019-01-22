@@ -31,8 +31,9 @@ $admin = get_admin("super");
         <span class="d-block"><strong>주소</strong> <span><?php echo $default['de_admin_company_addr']; ?></span></span>
         <span class="d-block"><strong>사업자 등록번호</strong> <span><?php echo $default['de_admin_company_saupja_no']; ?></span></span>
         <span class="d-block"><strong>대표</strong> <span><?php echo $default['de_admin_company_owner']; ?></span></span>
-        <span class="d-block"><strong>전화</strong> <span><?php echo $default['de_admin_company_tel']; ?></span></span>
-        <span class="d-block"><strong>팩스</strong> <span><?php echo $default['de_admin_company_fax']; ?></span></span>
+        <span class="d-block"><strong>전화</strong> <a href="tel:<?php echo str_replace('-', '', $default['de_admin_company_tel']); ?>"><span><?php echo $default['de_admin_company_tel']; ?></span> <i class="fa fa-phone" aria-hidden="true"></i></a></span>
+        <span class="d-block"><strong>팩스</strong> <span><?php echo $default['de_admin_company_fax']; ?> <i class="fa fa-fax" aria-hidden="true"></i></span></span>
+        <span class="d-block"><strong>이메일</strong> <a href="mailto:<?php echo $default['de_admin_info_email']; ?>"><span><?php echo $default['de_admin_info_email']; ?></span> <i class="fa fa-envelope-open" aria-hidden="true"></i></a></span>
         <!-- <span><strong>운영자</strong> <?php echo $admin['mb_name']; ?></span><br> -->
         <span class="d-block"><strong>통신판매업신고번호</strong> <span><?php echo $default['de_admin_tongsin_no']; ?></span></span>
         <span class="d-block"><strong>개인정보 보호책임자</strong> <span><?php echo $default['de_admin_info_name']; ?></span></span>

@@ -266,7 +266,7 @@ body {
 }
 #ft #ft_logo img { max-width: 155px; }
 #ft .company-info {  }
-#ft .company-info span { color: rgba(255,255,255,.5); }
+#ft .company-info span,#ft .company-info a { color: rgba(255,255,255,.5); }
 #ft .company-info strong { color: rgba(255,255,255,.7); }
 #ft .company-info .copyright { color: rgba(255,255,255,.4); }
 /* END :: Footer */
