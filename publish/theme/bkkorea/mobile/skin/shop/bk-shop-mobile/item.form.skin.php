@@ -413,7 +413,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0
         <li id="sit_dvex">
             <h2>배송/교환정보</h2>
             <div id="sit_dvr">
-                <h3>배송정보 및 교횐 반품</h3>
+                <h3>배송정보 및 교환 반품</h3>
                 <?php // echo conv_content($default['de_baesong_content'], 1); ?>
                 <img src="<?php echo G5_IMG_URL;?>/mobile_delevery.png" alt="mobile delevery" class="img-fluid" />
             </div>

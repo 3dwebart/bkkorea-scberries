@@ -1,12 +1,50 @@
 @charset "utf-8";
-
+/********** BIGIN :: Common **********/
 body {
     background-color: rgba(239,229,217,1);
     width: 100%;
     max-width: 100%;
     overflow-y: auto;
 }
-
+a:link, a:visited,
+.new_win .win_desc {
+    color: rgba(77,60,61,1);
+}
+a:hover,
+#smb_my_ov .my_pocou a {
+    color: rgba(204,167,123,1);
+}
+.w-color {
+    color: #ffffff !important;
+}
+#sod_ws_act .btn01 {
+    background-color: rgba(204,167,123,1);
+}
+#sod_ws_act .btn02 {
+    color: rgba(204,167,123,1);
+    border: 0;
+}
+.new_win .win_btn .btn_close,
+a.btn_b02, .btn_b02 {
+    background-color: rgba(204,167,123,1);
+    color: #fff;
+}
+#sit_btn_buy, .btn_submit,
+.new_win #win_title {
+    background-color: rgba(77,60,61,1);
+}
+.new_win .win_ul li .selected,
+#bo_cate #bo_cate_on {
+    background-color: rgba(204,167,123,1);
+    color: #fff;
+    -webkit-box-shadow: 0 0 5px rgba(204,167,123,0.8);
+    -moz-box-shadow: 0 0 5px rgba(204,167,123,0.8);
+    box-shadow: 0 0 8px rgba(204,167,123,0.8);
+}
+#ol_after_private a {
+    background-color: rgba(239,229,217,1);
+}
+/********** END :: Common **********/
 .menu {
     display: block;
     position: fixed;
@@ -245,6 +283,33 @@ body {
 }
 /* END :: Mobile Swipe Slider */
 /********* END :: Index **********/
+/********* BIGIN :: My page **********/
+.wishlist li {
+    float: left;
+    padding: 5px;
+    width: 33.33333%;
+    text-align: center;
+}
+.wishlist li.empty_list {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+}
+#btn_more_item,
+#smb_my .btn_more {
+    color: rgba(255,255,255,1);
+    background-color: rgba(204, 167, 123,1);
+
+}
+#smb_my_ov .my_name {
+    background-color: rgba(77,60,61,1);
+
+}
+#container_title {
+    background-color: transparent;
+    color: rgba(77,60,61,1);
+}
+/********* END :: My page **********/
 /* BIGIN :: Item list */
 .sct_10 .sct_txt {
     font-weight: bold;

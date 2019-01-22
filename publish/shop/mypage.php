@@ -24,11 +24,11 @@ include_once('./_head.php');
 
 // 쿠폰
 $cp_count = 0;
-$sql = " select cp_id
-            from {$g5['g5_shop_coupon_table']}
-            where mb_id IN ( '{$member['mb_id']}', '전체회원' )
-              and cp_start <= '".G5_TIME_YMD."'
-              and cp_end >= '".G5_TIME_YMD."' ";
+$sql = " SELECT cp_id
+            FROM {$g5['g5_shop_coupon_table']}
+            WHERE mb_id IN ( '{$member['mb_id']}', '전체회원' )
+              AND cp_start <= '".G5_TIME_YMD."'
+              AND cp_end >= '".G5_TIME_YMD."' ";
 $res = sql_query($sql);
 
 for($k=0; $cp=sql_fetch_array($res); $k++) {
@@ -109,13 +109,13 @@ for($k=0; $cp=sql_fetch_array($res); $k++) {
             <ul>
 
             <?php
-            $sql = " select *
-                       from {$g5['g5_shop_wish_table']} a,
+            $sql = " SELECT *
+                       FROM {$g5['g5_shop_wish_table']} a,
                             {$g5['g5_shop_item_table']} b
-                      where a.mb_id = '{$member['mb_id']}'
-                        and a.it_id  = b.it_id
-                      order by a.wi_id desc
-                      limit 0, 8 ";
+                      WHERE a.mb_id = '{$member['mb_id']}'
+                        AND a.it_id  = b.it_id
+                      ORDER BY a.wi_id DESC
+                      LIMIT 0, 8 ";
             $result = sql_query($sql);
             for ($i=0; $row = sql_fetch_array($result); $i++)
             {

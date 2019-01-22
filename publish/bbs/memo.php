@@ -18,7 +18,7 @@ else if ($kind == 'send')
 else
     alert(''.$kind .'값을 넘겨주세요.');
 
-$sql = " select count(*) as cnt from {$g5['memo_table']} where me_{$kind}_mb_id = '{$member['mb_id']}' ";
+$sql = " SELECT COUNT(*) as cnt FROM {$g5['memo_table']} WHERE me_{$kind}_mb_id = '{$member['mb_id']}' ";
 $row = sql_fetch($sql);
 $total_count = $row['cnt'];
 
@@ -41,11 +41,11 @@ else
 
 $list = array();
 
-$sql = " select a.*, b.mb_id, b.mb_nick, b.mb_email, b.mb_homepage
-            from {$g5['memo_table']} a
-            left join {$g5['member_table']} b on (a.me_{$unkind}_mb_id = b.mb_id)
-            where a.me_{$kind}_mb_id = '{$member['mb_id']}'
-            order by a.me_id desc limit $from_record, {$config['cf_page_rows']} ";
+$sql = " SELECT a.*, b.mb_id, b.mb_nick, b.mb_email, b.mb_homepage
+            FROM {$g5['memo_table']} a
+            LEFT JOIN {$g5['member_table']} b on (a.me_{$unkind}_mb_id = b.mb_id)
+            WHERE a.me_{$kind}_mb_id = '{$member['mb_id']}'
+            ORDER BY a.me_id DESC LIMIT $from_record, {$config['cf_page_rows']} ";
 $result = sql_query($sql);
 for ($i=0; $row=sql_fetch_array($result); $i++)
 {

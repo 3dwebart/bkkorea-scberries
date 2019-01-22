@@ -20,9 +20,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
             <a href="<?php echo G5_BBS_URL ?>/logout.php" id="ol_after_logout">로그아웃</a>
         </div>
     </div>
-
-  
-
+    <!-- BIGIN :: Icon button - memo & point -->
     <ul id="ol_after_private">
         <li id="ol_after_memo">
             <a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank">
@@ -37,7 +35,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
             </a>
         </li>
     </ul>
-
+    <!-- END :: Icon button - memo & point -->
 </aside>
 
 <script>

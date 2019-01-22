@@ -6,7 +6,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 ?>
 
 <div id="point" class="new_win">
-    <h1 id="win_title"><i class="fa fa-database" aria-hidden="true"></i> <?php echo $g5['title'] ?></h1>
+    <h1 id="win_title" class="d-flex space-between">
+        <span><i class="fa fa-database" aria-hidden="true"></i> <?php echo $g5['title'] ?></span>
+        <a href="#" onclick="window.close();" class="w-color"><i class="fa fa-times"></i></a>
+    </h1>
     <div class="list_01">
         <ul id="point_ul">
             <?php

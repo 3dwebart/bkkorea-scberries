@@ -6,7 +6,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 ?>
 
 <div id="memo_list" class="new_win">
-    <h1 id="win_title"><?php echo $g5['title'] ?></h1>
+    <h1 id="win_title" class="d-flex space-between">
+        <span><?php echo $g5['title'] ?></span>
+        <a href="#" onclick="window.close();" class="w-color"><i class="fa fa-times"></i></a>
+    </h1>
 
     <ul class="win_ul">
         <li><a href="./memo.php?kind=recv" class="<?php if ($kind == 'recv') {  ?>selected<?php }  ?>">받은쪽지</a></li>
