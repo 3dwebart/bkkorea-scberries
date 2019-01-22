@@ -251,6 +251,14 @@ body {
     font-size: 0.85em;
     line-height: 1.3em;
 }
+.sct_10 .sct_txt a {
+    display: block;
+    width:100%;
+    padding:0 5px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
 .sct_10 .sct_cost {
     margin: 5px 10px;
     font-size: 0.85em;
