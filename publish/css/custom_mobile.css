@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-	background-color: rgba(239,229,217,1);
+    background-color: rgba(239,229,217,1);
     width: 100%;
     max-width: 100%;
     overflow-y: auto;
@@ -19,8 +19,8 @@ body {
     transition: all .5s ease;
 }
 .menu.on {
-	left: 0;
-	transition: all .5s ease;
+    left: 0;
+    transition: all .5s ease;
 }
 .cate_bg {
     background: rgba(0,0,0,0);
@@ -33,32 +33,31 @@ body {
     transition: all .5s ease;
 }
 .cate_bg.on {
-	background: rgba(0,0,0,0.3);
-	transition: all .5s ease;
+    background: rgba(0,0,0,0.3);
+    transition: all .5s ease;
 }
 .cate-menu-bg {
-	width: 100%;
-	height: 100%;
-	position: fixed;
+    width: 100%;
+    height: 100%;
+    position: fixed;
 }
 .type-cate-nav {
-	text-align: center;
+    text-align: center;
 }
 .type-cate-nav a {
-	position: relative;
-	display: inline-block;
-	padding: 5px 10px;
-	background-color: rgba(204,167,123,1);
-	border: 1px solid rgba(204,167,123,1);
-	color: rgba(239,229,217,1);
-	margin: 4px 0;
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgba(239,229,217,1);
+    color: rgba(77,60,61,1);
+    margin: 4px 0;
 }
 
 .type-cate-nav a.on {
-	/*  */
+    /*  */
 }
 .type-cate-nav a.on:after {
-	content: "";
+    content: "";
     position: absolute;
     bottom: -7px;
     left: 50%;
@@ -120,21 +119,21 @@ body {
     margin-bottom: 0;
 }
 .sct_10 .sct_li:nth-child(odd) {
-	padding-left: 4px;
-	padding-right: 2px;
-	-webkit-box-sizing: border-box;
+    padding-left: 4px;
+    padding-right: 2px;
+    -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 .sct_10 .sct_li:nth-child(even) {
-	padding-left: 2px;
-	padding-right: 4px;
-	-webkit-box-sizing: border-box;
+    padding-left: 2px;
+    padding-right: 4px;
+    -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 .sct_10 .sct_li .li_wr {
-	background-color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,1);
 }
 #hd_wr.mobile-header { display: flex; align-content: center; justify-content: space-between; background-color: rgba(77,60,61,1); position: relative; height: 50px; }
 
@@ -143,10 +142,10 @@ body {
 #hd_wr.mobile-header > * a * { color: #ffffff; }
 
 #hd #logo {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     margin: 0 auto;
     padding-top: 0;
@@ -186,18 +185,66 @@ body {
     color: #000;
 }
 #hd_wr.mobile-header .hidden-search {
-	position: absolute;
-	top: 100%;
-	right: 15px;
+    position: absolute;
+    top: 100%;
+    right: 15px;
+    z-index: 10;
 }
-/* BIGIM :: Index */
+/********** BIGIM :: Index **********/
 .sct_wrap h2 a {
     display: inline-block;
     padding-bottom: 0;
     border-bottom: 0;
     text-decoration: none;
 }
-/* END :: Index */
+/* BIGIN :: Mobile Swipe Slider */
+.swiper-pagination-bullet {
+    width: 50px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 0;
+    background-color: rgb(77,60,61);
+    opacity: .3;
+    transition: all .5s ease;
+}
+.swiper-pagination-bullet-active {
+    background-color: rgb(77,60,61);
+    opacity: 1;
+    transition: all .5s ease;
+}
+.swiper-container {
+    width: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-button-prev {
+  background-image: url("/img/swipe_slide_arrow.png") !important;
+  transform: rotate(180deg);
+}
+
+.swiper-button-next {
+  background-image: url("/img/swipe_slide_arrow.png") !important;
+}
+/* END :: Mobile Swipe Slider */
+/********* END :: Index **********/
 /* BIGIN :: Item list */
 .sct_10 .sct_txt {
     font-weight: bold;
