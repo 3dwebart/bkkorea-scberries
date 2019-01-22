@@ -99,6 +99,9 @@ if (defined('_SHOP_')) {
 <script src="<?php echo G5_JS_URL ?>/owl.carousel.min.js"></script>
 <script src="<?php echo G5_JS_URL ?>/owl-tube.min.js"></script>
 <!-- END :: OWL Carousel JavaScript -->
+<?php if(G5_IS_MOBILE && defined('_INDEX_')) { ?>
+<link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/swiper.min.css">
+<?php } ?>
 <link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/custom.css">
 <?php if(G5_IS_MOBILE) { ?>
 <link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/custom_mobile.css">

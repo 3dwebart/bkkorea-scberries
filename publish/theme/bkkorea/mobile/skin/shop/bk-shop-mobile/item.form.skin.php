@@ -474,7 +474,7 @@ $(window).bind("pageshow", function(event) {
     }
 });
 
-$(function(){
+$(document).ready(function(){
     // 상품이미지 슬라이드
     var time = 500;
     var idx = idx2 = 0;
@@ -525,6 +525,25 @@ $(function(){
         popup_window(url, "largeimage", opt);
 
         return false;
+    });
+    
+    function movieAutoSize() {
+        var w = $(window).width();
+        var h = (w / 16) * 9;
+        $('iframe').css({
+            'width' : 100 + '%',
+            'height' : h + 'px'
+        });
+    }
+    
+    var movieLength = $('iframe').length;
+    if(movieLength > 0) {
+        movieAutoSize();
+    }
+    $(window).resize(function() {
+        if(movieLength > 0) {
+            movieAutoSize();
+        }
     });
 });
 
