@@ -16,11 +16,11 @@ include_once(G5_MSHOP_PATH.'/_head.php');
 
 // 쿠폰
 $cp_count = 0;
-$sql = " select cp_id
-            from {$g5['g5_shop_coupon_table']}
-            where mb_id IN ( '{$member['mb_id']}', '전체회원' )
-              and cp_start <= '".G5_TIME_YMD."'
-              and cp_end >= '".G5_TIME_YMD."' ";
+$sql = " SELECT cp_id
+            FROM {$g5['g5_shop_coupon_table']}
+            WHERE mb_id IN ( '{$member['mb_id']}', '전체회원' )
+              AND cp_start <= '".G5_TIME_YMD."'
+              AND cp_end >= '".G5_TIME_YMD."' ";
 $res = sql_query($sql);
 
 for($k=0; $cp=sql_fetch_array($res); $k++) {
@@ -37,8 +37,8 @@ for($k=0; $cp=sql_fetch_array($res); $k++) {
             <img src="<?php echo G5_THEME_IMG_URL ;?>/no_profile.gif" alt="프로필이미지" width="20"> <strong><?php echo $member['mb_id'] ? $member['mb_name'] : '비회원'; ?></strong>님
             <ul class="smb_my_act">
                 <?php if ($is_admin == 'super') { ?><li><a href="<?php echo G5_ADMIN_URL; ?>/" class="btn_admin">관리자</a></li><?php } ?>
-                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=register_form.php" class="btn01">정보수정</a></li>
-                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=member_leave.php" onclick="return member_leave();" class="btn01">회원탈퇴</a></li>
+                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=register_form.php" class="btn01 btn-middle">정보수정</a></li>
+                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=member_leave.php" onclick="return member_leave();" class="btn01 btn-middle">회원탈퇴</a></li>
             </ul>
         </div>
         <ul class="my_pocou">
@@ -48,26 +48,36 @@ for($k=0; $cp=sql_fetch_array($res); $k++) {
 
         </ul>
         <div class="my_info">
+            <?php // if(!empty($member['mb_tel'])) { ?>
             <div class="my_info_wr">
                 <strong>연락처</strong>
-                <span><?php echo ($member['mb_tel'] ? $member['mb_tel'] : '미등록'); ?></span>
+                <span><?php echo ($member['mb_hp'] ? $member['mb_hp'] : '미등록'); ?></span>
             </div>
+            <?php // } ?>
+            <?php if(!empty($member['mb_email'])) { ?>
             <div class="my_info_wr">
                 <strong>E-Mail</strong>
                 <span><?php echo ($member['mb_email'] ? $member['mb_email'] : '미등록'); ?></span>
             </div>
+            <?php } ?>
+            <?php if(!empty($member['mb_today_login'])) { ?>
             <div class="my_info_wr">
                 <strong>최종접속일시</strong>
                 <span><?php echo $member['mb_today_login']; ?></span>
              </div>
+             <?php } ?>
+             <?php if(!empty($member['mb_datetime'])) { ?>
             <div class="my_info_wr">
             <strong>회원가입일시</strong>
                 <span><?php echo $member['mb_datetime']; ?></span>
             </div>
+            <?php } ?>
+            <?php if(!empty($member['mb_addr2'])) { ?>
             <div class="my_info_wr ov_addr">
                 <strong>주소</strong>
                 <span><?php echo sprintf("(%s%s)", $member['mb_zip1'], $member['mb_zip2']).' '.print_address($member['mb_addr1'], $member['mb_addr2'], $member['mb_addr3'], $member['mb_addr_jibeon']); ?></span>
             </div>
+            <?php } ?>
         </div>
         <div class="my_ov_btn"><button type="button" class="btn_op_area"><i class="fa fa-caret-down" aria-hidden="true"></i><span class="sound_only">상세정보 보기</span></button></div>
 
@@ -99,13 +109,13 @@ for($k=0; $cp=sql_fetch_array($res); $k++) {
 
         <ul>
             <?php
-            $sql = " select *
-                       from {$g5['g5_shop_wish_table']} a,
+            $sql = " SELECT *
+                       FROM {$g5['g5_shop_wish_table']} a,
                             {$g5['g5_shop_item_table']} b
-                      where a.mb_id = '{$member['mb_id']}'
-                        and a.it_id  = b.it_id
-                      order by a.wi_id desc
-                      limit 0, 6 ";
+                      WHERE a.mb_id = '{$member['mb_id']}'
+                        AND a.it_id  = b.it_id
+                      ORDER BY a.wi_id DESC
+                      LIMIT 0, 6 ";
             $result = sql_query($sql);
             for ($i=0; $row = sql_fetch_array($result); $i++)
             {

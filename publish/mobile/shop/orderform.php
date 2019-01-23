@@ -5,8 +5,7 @@ set_session("ss_direct", $sw_direct);
 // 장바구니가 비어있는가?
 if ($sw_direct) {
     $tmp_cart_id = get_session("ss_cart_direct");
-}
-else {
+} else {
     $tmp_cart_id = get_session("ss_cart_id");
 }
 
@@ -53,7 +52,7 @@ ob_start();
         $goods_count = -1;
 
         // $s_cart_id 로 현재 장바구니 자료 쿼리
-        $sql = " select a.ct_id,
+        $sql = " SELECT a.ct_id,
                         a.it_id,
                         a.it_name,
                         a.ct_price,
@@ -66,11 +65,11 @@ ob_start();
                         b.ca_id2,
                         b.ca_id3,
                         b.it_notax
-                   from {$g5['g5_shop_cart_table']} a left join {$g5['g5_shop_item_table']} b on ( a.it_id = b.it_id )
-                  where a.od_id = '$s_cart_id'
-                    and a.ct_select = '1' ";
-        $sql .= " group by a.it_id ";
-        $sql .= " order by a.ct_id ";
+                   FROM {$g5['g5_shop_cart_table']} a left join {$g5['g5_shop_item_table']} b ON ( a.it_id = b.it_id )
+                  WHERE a.od_id = '$s_cart_id'
+                    AND a.ct_select = '1' ";
+        $sql .= " GROUP BY a.it_id ";
+        $sql .= " ORDER BY a.ct_id ";
         $result = sql_query($sql);
 
         $good_info = '';
@@ -82,19 +81,17 @@ ob_start();
         $comm_free_mny = 0; // 면세금액
         $tot_tax_mny = 0;
 
-        for ($i=0; $row=mysql_fetch_array($result); $i++)
-        {
+        for ($i=0; $row=mysql_fetch_array($result); $i++) {
             // 합계금액 계산
-            $sql = " select SUM(IF(io_type = 1, (io_price * ct_qty), ((ct_price + io_price) * ct_qty))) as price,
-                            SUM(ct_point * ct_qty) as point,
-                            SUM(ct_qty) as qty
-                        from {$g5['g5_shop_cart_table']}
-                        where it_id = '{$row['it_id']}'
-                          and od_id = '$s_cart_id' ";
+            $sql = " SELECT SUM(IF(io_type = 1, (io_price * ct_qty), ((ct_price + io_price) * ct_qty))) AS price,
+                            SUM(ct_point * ct_qty) AS point,
+                            SUM(ct_qty) AS qty
+                        FROM {$g5['g5_shop_cart_table']}
+                        WHERE it_id = '{$row['it_id']}'
+                          AND od_id = '$s_cart_id' ";
             $sum = sql_fetch($sql);
 
-            if (!$goods)
-            {
+            if (!$goods) {
                 //$goods = addslashes($row[it_name]);
                 //$goods = get_text($row[it_name]);
                 $goods = preg_replace("/\?|\'|\"|\||\,|\&|\;/", "", $row['it_name']);
@@ -142,13 +139,13 @@ ob_start();
                 $cp_button = '';
                 $cp_count = 0;
 
-                $sql = " select cp_id
-                            from {$g5['g5_shop_coupon_table']}
-                            where mb_id IN ( '{$member['mb_id']}', '전체회원' )
-                              and cp_start <= '".G5_TIME_YMD."'
-                              and cp_end >= '".G5_TIME_YMD."'
-                              and cp_minimum <= '$sell_price'
-                              and (
+                $sql = " SELECT cp_id
+                            FROM {$g5['g5_shop_coupon_table']}
+                            WHERE mb_id IN ( '{$member['mb_id']}', '전체회원' )
+                              AND cp_start <= '".G5_TIME_YMD."'
+                              AND cp_end >= '".G5_TIME_YMD."'
+                              AND cp_minimum <= '$sell_price'
+                              AND (
                                     ( cp_method = '0' and cp_target = '{$row['it_id']}' )
                                     OR
                                     ( cp_method = '1' and ( cp_target IN ( '{$row['ca_id']}', '{$row['ca_id2']}', '{$row['ca_id3']}' ) ) )
@@ -368,10 +365,10 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 $addr_list .= '<label for="ad_sel_addr_same">주문자와 동일</label>'.PHP_EOL;
 
                 // 기본배송지
-                $sql = " select *
-                            from {$g5['g5_shop_order_address_table']}
-                            where mb_id = '{$member['mb_id']}'
-                              and ad_default = '1' ";
+                $sql = " SELECT *
+                            FROM {$g5['g5_shop_order_address_table']}
+                            WHERE mb_id = '{$member['mb_id']}'
+                              AND ad_default = '1' ";
                 $row = sql_fetch($sql);
                 if($row['ad_id']) {
                     $val1 = $row['ad_name'].$sep.$row['ad_tel'].$sep.$row['ad_hp'].$sep.$row['ad_zip1'].$sep.$row['ad_zip2'].$sep.$row['ad_addr1'].$sep.$row['ad_addr2'].$sep.$row['ad_addr3'].$sep.$row['ad_jibeon'].$sep.$row['ad_subject'];
@@ -380,12 +377,12 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
                 }
 
                 // 최근배송지
-                $sql = " select *
-                            from {$g5['g5_shop_order_address_table']}
-                            where mb_id = '{$member['mb_id']}'
-                              and ad_default = '0'
-                            order by ad_id desc
-                            limit 1 ";
+                $sql = " SELECT *
+                            FROM {$g5['g5_shop_order_address_table']}
+                            WHERE mb_id = '{$member['mb_id']}'
+                              AND ad_default = '0'
+                            ORDER BY ad_id DESC
+                            LIMIT 1 ";
                 $result = sql_query($sql);
                 for($i=0; $row=sql_fetch_array($result); $i++) {
                     $val1 = $row['ad_name'].$sep.$row['ad_tel'].$sep.$row['ad_hp'].$sep.$row['ad_zip1'].$sep.$row['ad_zip2'].$sep.$row['ad_addr1'].$sep.$row['ad_addr2'].$sep.$row['ad_addr3'].$sep.$row['ad_jibeon'].$sep.$row['ad_subject'];
@@ -461,13 +458,13 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
     $oc_cnt = $sc_cnt = 0;
     if($is_member) {
         // 주문쿠폰
-        $sql = " select cp_id
-                    from {$g5['g5_shop_coupon_table']}
-                    where mb_id IN ( '{$member['mb_id']}', '전체회원' )
-                      and cp_method = '2'
-                      and cp_start <= '".G5_TIME_YMD."'
-                      and cp_end >= '".G5_TIME_YMD."'
-                      and cp_minimum <= '$tot_sell_price' ";
+        $sql = " SELECT cp_id
+                    FROM {$g5['g5_shop_coupon_table']}
+                    WHERE mb_id IN ( '{$member['mb_id']}', '전체회원' )
+                      AND cp_method = '2'
+                      AND cp_start <= '".G5_TIME_YMD."'
+                      AND cp_end >= '".G5_TIME_YMD."'
+                      AND cp_minimum <= '$tot_sell_price' ";
         $res = sql_query($sql);
 
         for($k=0; $cp=sql_fetch_array($res); $k++) {
@@ -479,13 +476,13 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
 
         if($send_cost > 0) {
             // 배송비쿠폰
-            $sql = " select cp_id
-                        from {$g5['g5_shop_coupon_table']}
-                        where mb_id IN ( '{$member['mb_id']}', '전체회원' )
-                          and cp_method = '3'
-                          and cp_start <= '".G5_TIME_YMD."'
-                          and cp_end >= '".G5_TIME_YMD."'
-                          and cp_minimum <= '$tot_sell_price' ";
+            $sql = " SELECT cp_id
+                        FROM {$g5['g5_shop_coupon_table']}
+                        WHERE mb_id IN ( '{$member['mb_id']}', '전체회원' )
+                          AND cp_method = '3'
+                          AND cp_start <= '".G5_TIME_YMD."'
+                          AND cp_end >= '".G5_TIME_YMD."'
+                          AND cp_minimum <= '$tot_sell_price' ";
             $res = sql_query($sql);
 
             for($k=0; $cp=sql_fetch_array($res); $k++) {
@@ -597,11 +594,9 @@ require_once(G5_MSHOP_PATH.'/'.$default['de_pg_service'].'/orderform.1.php');
 
         $temp_point = 0;
         // 회원이면서 포인트사용이면
-        if ($is_member && $config['cf_use_point'])
-        {
+        if ($is_member && $config['cf_use_point']) {
             // 포인트 결제 사용 포인트보다 회원의 포인트가 크다면
-            if ($member['mb_point'] >= $default['de_settle_min_point'])
-            {
+            if ($member['mb_point'] >= $default['de_settle_min_point']) {
                 $temp_point = (int)$default['de_settle_max_point'];
 
                 if($temp_point > (int)$tot_sell_price)
