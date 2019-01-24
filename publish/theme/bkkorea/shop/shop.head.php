@@ -317,8 +317,16 @@ $(function (){
 	<div id="container" class="pb-5">
 		<div class="container">
 		<?php if ((!$bo_table || $w == 's' ) && !defined('_INDEX_')) { ?>
+		<?php
+			if(!empty(co_id) && $co_id == 'company') {
+				$deco_text = '<span class="title_deco">about</span>';
+			} else {
+				$deco_text = '';
+			}
+		?>
 			<div class="top-wrapper">
 				<div id="wrapper_title">
+					<?php echo($deco_text); ?>
 					<span><?php echo $g5['title'] ?></span>
 				</div>
 			</div>

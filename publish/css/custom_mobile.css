@@ -44,6 +44,11 @@ a.btn_b02, .btn_b02 {
 #ol_after_private a {
     background-color: rgba(239,229,217,1);
 }
+.btn-middle, a.btn-middle {
+    background-color: rgba(204,167,123,1);
+    color: rgba(255,255,255,1);
+    border: 0;
+}
 /********** END :: Common **********/
 .menu {
     display: block;
