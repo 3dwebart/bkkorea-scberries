@@ -150,8 +150,8 @@ function get_mshop_category($ca_id, $len)
                     <li class="bd"><a href="<?php echo G5_SHOP_URL; ?>/couponzone.php">쿠폰존</a></li>
                     <li class="bd"><a href="<?php echo G5_BBS_URL; ?>/faq.php">FAQ</a></li>
                     <li><a href="<?php echo G5_BBS_URL; ?>/qalist.php">1:1문의</a></li>
-                    <li><a href="<?php echo G5_SHOP_URL; ?>/personalpay.php">개인결제</a></li>
-                    <li><a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=5">세일상품</a></li>
+                    <!--<li><a href="<?php echo G5_SHOP_URL; ?>/personalpay.php">개인결제</a></li>
+                    <li><a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=5">세일상품</a></li>-->
                 </ul> 
             </li>
             <li id="cate_03" class="con"><?php include(G5_MSHOP_SKIN_PATH.'/boxtodayview.skin.php'); // 오늘 본 상품 ?></li>
