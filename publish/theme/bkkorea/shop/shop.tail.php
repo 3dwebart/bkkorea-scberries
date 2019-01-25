@@ -17,12 +17,12 @@ $admin = get_admin("super");
 <!-- 하단 시작 { -->
 </div>
 
-<div id="ft">
+<div id="ft" class="pc">
     <div class="ft_wr">
         <div class="ft_menu">
             <div class="container">
                 <ul class="ft_ul">
-                    <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company" class="must-not-click">회사소개</a></li><!--/* 임시로 링크,를 막음 : 2019-01-02 */-->
+                    <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company">회사소개</a></li><!--/* 임시로 링크,를 막음 : 2019-01-02 */-->
                     <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision">서비스이용약관</a></li>
                     <li><a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy">개인정보처리방침</a></li>
                     <li><a href="<?php echo get_device_change_url(); ?>">모바일버전</a></li>

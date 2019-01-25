@@ -41,7 +41,8 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
         echo $img;
         echo '</div>'.PHP_EOL;
         echo '<div class="prd_name">';
-        echo cut_str($it_name, 10, '').PHP_EOL;
+        // echo cut_str($it_name, 10, '').PHP_EOL;
+        echo $it_name.PHP_EOL;
         echo '</div>';
         echo '<div class="prd_cost">';
         echo number_format(get_price($rowx)).PHP_EOL;
@@ -53,8 +54,8 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
     }
     if ($tv_tot_count > 0) echo '</ul>'.PHP_EOL;
     ?>
-        <div id="stv_btn"></div>
         <span id="stv_pg"></span>
+        <div id="stv_btn"></div>
 
         <script>
         $(function() {

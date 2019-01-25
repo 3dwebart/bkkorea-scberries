@@ -203,7 +203,61 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 </section>
 -->
 <!-- } 일반 카테고리 끝 -->
-
+<!--
+	client id : ae7ab29bf89b4450929103416fbc7602
+	token : 9181215499.e12d512.8fc79151fb9b4e1c958bd2f73540b718
+-->
+<!-- js 파일 로드 -->
+<link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/index-custom.css" title="index css" type="text/css" media="screen" charset="utf-8">
+<script type="text/javascript" src="<?php echo G5_JS_URL ?>/jquery.simplyscroll.js"></script>
+<link rel="stylesheet" href="<?php echo G5_CSS_URL ?>/jquery.simplyscroll.css" media="all" type="text/css">
+<script>
+(function($) {  
+	var tocken = "9181215499.e12d512.8fc79151fb9b4e1c958bd2f73540b718"; /* Access Tocken 입력 */  
+	var count = "9";  
+	$.ajax({  
+		type: "GET",
+		dataType: "jsonp",
+		cache: false,
+		url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + tocken + "&count=" + count,
+		success: function(response) {
+			if ( response.data.length > 0 ) {
+				for(var i = 0; i < response.data.length; i++) {
+					var insta = '<div class="insta-box">';
+					insta += "<a target='_blank' href='" + response.data[i].link + "'>";
+					insta += "<div class'image-layer'>";
+					//insta += "<img src='" + response.data[i].images.thumbnail.url + "'>";
+					/*
+						thumbnail : 150 X 150 
+						low_resolution : 320 X 320
+						standard_resolution : 640 X 640
+						상세 내용 API : response.data[i].caption.text
+						LINK Count : response.data[i].likes.count
+					*/
+					insta += '<img src="' + response.data[i].images.low_resolution.url + '" class="img-fluid">';
+					insta += "</div>";
+					insta += "</a>";
+					insta += "</div>";
+					$("#scroller").append(insta);
+				} // END for
+			}
+			$("#scroller").simplyScroll({frameRate:60});
+		}
+	});
+})(jQuery);
+</script>
+<div class="sct_wrap">
+	<header class="cate-title d-flex space-between">
+		<h2>INSTAGRAM</h2>
+		<a href="https://www.instagram.com/scberries_24/" target="_blank" class="more"><i class="fa fa-plus"></i> more</a>
+	</header>
+	<div class="mb-4">
+		<img src="<?php echo G5_IMG_URL; ?>/index/instagram-title.png" alt="Instagram" />
+	</div>
+	<div class="container">
+		<div id="scroller"></div>
+	</div>
+</div>
 <?php
 include_once(G5_THEME_SHOP_PATH.'/shop.tail.php');
 ?>

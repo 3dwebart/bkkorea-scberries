@@ -21,8 +21,8 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
         $it_name = get_text($row['it_name']);
         // 이미지로 할 경우
         $it_img = get_it_image($row['it_id'], 60, 60, true);
+        echo '<div class="prd_img">'.$it_img.'</div>';
         echo '<a href="'.G5_SHOP_URL.'/cart.php">'.$it_name.'</a>';
-         echo '<div class="prd_img">'.$it_img.'</div>';
         echo '</li>';
 
         echo '<input type="hidden" name="act" value="buy" >';
@@ -38,7 +38,9 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
     ?>
     </ul>
     <?php if($i){ ?><button type="submit" class="btn02 btn_buy"><i class="fa fa-credit-card" aria-hidden="true"></i> 바로구매</button><?php } ?>
-    <a href="<?php echo G5_SHOP_URL; ?>/cart.php" class="btn01 go_cart">장바구니 바로가기</a>
+    <a href="<?php echo G5_SHOP_URL; ?>/cart.php" class="btn01 go_cart">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> 장바구니 바로가기
+    </a>
     </form>
 </aside>
 <!-- } 장바구니 간략 보기 끝 -->

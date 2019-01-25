@@ -16,7 +16,7 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
 ?>
 <script src="<?php echo G5_JS_URL ?>/custom.js"></script>
 <!-- 상단 시작 { -->
-<div>
+<div class="top-deco">
 	<img src="<?php echo G5_IMG_URL ?>/common/banner-top.jpg" alt="" class="w-100" />
 </div>
 <div id="hd">
@@ -134,6 +134,20 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
 		</div>
 	</div>
 </div>
+<div id="side_quick">
+	<div class="quick-menu">
+		<div class="side_menu_shop">
+			<span class="sound_only">test</span>
+			<button type="button" class="btn_side_shop">오늘본상품<span class="count"> (<?php echo get_view_today_items_count(); ?>)</span></button>
+			<?php include(G5_SHOP_SKIN_PATH.'/boxtodayview.skin.php'); // 오늘 본 상품 ?>
+			<button type="button" class="btn_side_shop">장바구니<span class="count"> (<?php echo get_boxcart_datas_count(); ?>)</span></button>
+			<?php include_once(G5_SHOP_SKIN_PATH.'/boxcart.skin.php'); // 장바구니 ?>
+			<button type="button" class="btn_side_shop">위시리스트<span class="count"> (<?php echo get_wishlist_datas_count(); ?>)</span></button>
+			<?php include_once(G5_SHOP_SKIN_PATH.'/boxwish.skin.php'); // 위시리스트 ?>
+		</div>
+	</div>
+</div>
+<?php /*
 <div id="side_menu">
 	<button type="button" id="btn_sidemenu" class="btn_sidemenu_cl"><i class="fa fa-outdent" aria-hidden="true"></i><span class="sound_only">사이드메뉴버튼</span></button>
 	<div class="side_menu_wr">
@@ -150,7 +164,7 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
 
 	</div>
 </div>
-
+*/ ?>
 
 <script>
 $(function (){
@@ -228,7 +242,7 @@ $(function (){
 				<source src="/img/common/m_02.mp4" type="video/mp4" />
 			</video>
 			<p class="caption">HTML 5 Video</p>
-		</div>
+		</div><?php /*
 		<div class="item image">
 			<span class="loading">Loading...</span>
 			<figure>
@@ -268,6 +282,7 @@ $(function (){
 			</video>
 			<p class="caption">HTML 5 Video</p>
 		</div>
+		*/ ?>
 	</section>
 </div>
 <script src="<?php echo G5_JS_URL ?>/index/slick.min.js"></script>

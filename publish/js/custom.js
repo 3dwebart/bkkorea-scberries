@@ -7,6 +7,8 @@
 		} else {
 			jQuery('#hd_menu').removeClass('switch');
 		}
+		
+		quickMenuScroll();
 	});
 	/* BIGIN :: title popup delete */
 	jQuery(document).on('mouseenter', 'img', function() {
@@ -114,4 +116,30 @@
 		jQuery('#sct_location').insertAfter('#wrapper_title');
 	});
 	/* END :: if nothing information, it's hidden to information table */
+	/* BIGIN :: Quick menu function */
+	//var top_1 = jQuery('.top-deco img').height();
+	var top_1 = 0;
+	var top_2 = 54;
+	var topH = top_1 + 272;
+	var sctollTop = 0;
+	function quickMenuScroll() {
+		top_1 = jQuery('.top-deco img').height();
+		sctollTop = jQuery(document).scrollTop();
+			
+		if(sctollTop == 0) {
+			$("#side_quick").stop().animate({
+				"top" : sctollTop + top_1
+			}, 300);
+		} else if(sctollTop > topH) {
+			$("#side_quick").stop().animate({
+				"top" : sctollTop + top_2
+			}, 300);
+		} else {
+			$("#side_quick").stop().animate({
+				"top" : sctollTop + top_1
+			}, 300);
+		}
+	}
+	quickMenuScroll();
+	/* END :: Quick menu function */
 })(jQuery);
