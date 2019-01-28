@@ -1,11 +1,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
 $pp_hostname = "www.sandbox.paypal.com";
-$auth_token = ""; // 10 번에 token 넣어주세요. 
+$auth_token = "uJT32rTAPdkkZUIvIDmMdifL9fyWxXEJdgat0ikrRXQ74l1yUZNTTml-kgO"; // token 넣어주세요. 
 /*
-# 상용 서버
-# $pp_hostname = "www.paypal.com";
-# $auth_token = "";
+	상용 서버
+	$pp_hostname = "www.paypal.com";
+	$auth_token = "";
 */
 $req = 'cmd=_notify-synch';
 $tx_token = $_REQUEST['tx'];
@@ -24,7 +24,7 @@ $res = curl_exec($ch);
 curl_close($ch);
 
 if(!$res) {
-//HTTP ERROR
+	//HTTP ERROR
 	echo "Paypal 서버 연동 오류가 발생했습니다.";
 	exit;
 } else {

@@ -13,8 +13,8 @@ $connector->CnsPayVersion($phpVersion);
 $connector->setRequestData($_REQUEST);
 
 // 추가 파라메터 셋팅
-$connector->addRequestData("actionType", "PY0");  						// actionType : CL0 취소, PY0 승인, CI0 조회
-$connector->addRequestData("MallIP", $_SERVER['REMOTE_ADDR']);	// 가맹점 고유 ip
+$connector->addRequestData("actionType", "PY0"); // actionType : CL0 취소, PY0 승인, CI0 조회
+$connector->addRequestData("MallIP", $_SERVER['REMOTE_ADDR']); // 가맹점 고유 ip
 $connector->addRequestData("CancelPwd", $cancelPwd);
 
 //가맹점키 셋팅 (MID 별로 틀림)

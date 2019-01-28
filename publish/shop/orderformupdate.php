@@ -7,18 +7,21 @@ if( $od_settle_case == 'lpay' ){
     $default['de_pg_service'] = 'inicis';
 }
 
-if(($od_settle_case != '무통장' && $od_settle_case != 'KAKAOPAY') && $default['de_pg_service'] == 'lg' && !$_POST['LGD_PAYKEY'])
-    alert('결제등록 요청 후 주문해 주십시오.');
-
+if($od_settle_case != '페이팔') {
+    if(($od_settle_case != '무통장' && $od_settle_case != 'KAKAOPAY') && $default['de_pg_service'] == 'lg' && !$_POST['LGD_PAYKEY']) {
+        alert('결제등록 요청 후 주문해 주십시오.');
+    }
+}
 // 장바구니가 비어있는가?
-if (get_session("ss_direct"))
+if (get_session("ss_direct")) {
     $tmp_cart_id = get_session('ss_cart_direct');
-else
+} else {
     $tmp_cart_id = get_session('ss_cart_id');
+}
 
-if (get_cart_count($tmp_cart_id) == 0)// 장바구니에 담기
+if (get_cart_count($tmp_cart_id) == 0) {// 장바구니에 담기
     alert('장바구니가 비어 있습니다.\\n\\n이미 주문하셨거나 장바구니에 담긴 상품이 없는 경우입니다.', G5_SHOP_URL.'/cart.php');
-
+}
 $error = "";
 // 장바구니 상품 재고 검사
 $sql = " SELECT it_id,
@@ -44,11 +47,11 @@ for ($i=0; $row=sql_fetch_array($result); $i++)
         $error .= "{$row['ct_option']} 의 재고수량이 부족합니다. 현재고수량 : $it_stock_qty 개\\n\\n";
 }
 
-if($i == 0)
+if($i == 0) {
     alert('장바구니가 비어 있습니다.\\n\\n이미 주문하셨거나 장바구니에 담긴 상품이 없는 경우입니다.', G5_SHOP_URL.'/cart.php');
+}
 
-if ($error != "")
-{
+if ($error != "") {
     $error .= "다른 고객님께서 {$od_name}님 보다 먼저 주문하신 경우입니다. 불편을 끼쳐 죄송합니다.";
     alert($error);
 }
@@ -241,8 +244,7 @@ if($send_cost2 !== $i_send_cost2)
 // 결제포인트가 상이함
 // 회원이면서 포인트사용이면
 $temp_point = 0;
-if ($is_member && $config['cf_use_point'])
-{
+if ($is_member && $config['cf_use_point']) {
     if($member['mb_point'] >= $default['de_settle_min_point']) {
         $temp_point = (int)$default['de_settle_max_point'];
 
@@ -257,11 +259,11 @@ if ($is_member && $config['cf_use_point'])
     }
 }
 
-if (($i_temp_point > (int)$temp_point || $i_temp_point < 0) && $config['cf_use_point'])
+if (($i_temp_point > (int)$temp_point || $i_temp_point < 0) && $config['cf_use_point']) {
     die("Error....");
+}
 
-if ($od_temp_point)
-{
+if ($od_temp_point) {
     if ($member['mb_point'] < $od_temp_point)
         alert('회원님의 포인트가 부족하여 포인트로 결제 할 수 없습니다.');
 }
@@ -271,8 +273,7 @@ $order_price = $tot_od_price + $send_cost + $send_cost2 - $tot_sc_cp_price - $od
 
 $od_status = '주문';
 $od_tno    = '';
-if ($od_settle_case == "무통장")
-{
+if ($od_settle_case == "무통장") {
     $od_receipt_point   = $i_temp_point;
     $od_receipt_price   = 0;
     $od_misu            = $i_price - $od_receipt_price;
@@ -280,9 +281,7 @@ if ($od_settle_case == "무통장")
         $od_status      = '입금';
         $od_receipt_time = G5_TIME_YMDHIS;
     }
-}
-else if ($od_settle_case == "계좌이체")
-{
+} else if ($od_settle_case == "계좌이체") {
     switch($default['de_pg_service']) {
         case 'lg':
             include G5_SHOP_PATH.'/lg/xpay_result.php';
@@ -307,9 +306,7 @@ else if ($od_settle_case == "계좌이체")
     $od_misu            = $i_price - $od_receipt_price;
     if($od_misu == 0)
         $od_status      = '입금';
-}
-else if ($od_settle_case == "가상계좌")
-{
+} else if ($od_settle_case == "가상계좌") {
     switch($default['de_pg_service']) {
         case 'lg':
             include G5_SHOP_PATH.'/lg/xpay_result.php';
@@ -332,9 +329,7 @@ else if ($od_settle_case == "가상계좌")
     $od_deposit_name    = $depositor;
     $pg_price           = $amount;
     $od_misu            = $i_price - $od_receipt_price;
-}
-else if ($od_settle_case == "휴대폰")
-{
+} else if ($od_settle_case == "휴대폰") {
     switch($default['de_pg_service']) {
         case 'lg':
             include G5_SHOP_PATH.'/lg/xpay_result.php';
@@ -356,9 +351,7 @@ else if ($od_settle_case == "휴대폰")
     $od_misu            = $i_price - $od_receipt_price;
     if($od_misu == 0)
         $od_status      = '입금';
-}
-else if ($od_settle_case == "신용카드")
-{
+} else if ($od_settle_case == "신용카드") {
     switch($default['de_pg_service']) {
         case 'lg':
             include G5_SHOP_PATH.'/lg/xpay_result.php';
@@ -382,9 +375,7 @@ else if ($od_settle_case == "신용카드")
     $od_misu            = $i_price - $od_receipt_price;
     if($od_misu == 0)
         $od_status      = '입금';
-}
-else if ($od_settle_case == "간편결제" || ($od_settle_case == "lpay" && $default['de_pg_service'] === 'inicis') )
-{
+} else if ($od_settle_case == "간편결제" || ($od_settle_case == "lpay" && $default['de_pg_service'] === 'inicis') ) {
     switch($default['de_pg_service']) {
         case 'lg':
             include G5_SHOP_PATH.'/lg/xpay_result.php';
@@ -408,9 +399,7 @@ else if ($od_settle_case == "간편결제" || ($od_settle_case == "lpay" && $def
     $od_misu            = $i_price - $od_receipt_price;
     if($od_misu == 0)
         $od_status      = '입금';
-}
-else if ($od_settle_case == "KAKAOPAY")
-{
+} else if ($od_settle_case == "KAKAOPAY") {
     include G5_SHOP_PATH.'/kakaopay/kakaopay_result.php';
 
     $od_tno             = $tno;
@@ -423,15 +412,18 @@ else if ($od_settle_case == "KAKAOPAY")
     $od_misu            = $i_price - $od_receipt_price;
     if($od_misu == 0)
         $od_status      = '입금';
-}
-else
-{
+} else if ($od_settle_case == "페이팔") {
+    //include G5_SHOP_PATH.'/kakaopay/kakaopay_result.php';
+
+    die("페이팔 결제연동 서비스 준비중입니다.");
+} else {
     die("od_settle_case Error!!!");
 }
 
 $od_pg = $default['de_pg_service'];
-if($od_settle_case == 'KAKAOPAY')
+if($od_settle_case == 'KAKAOPAY') {
     $od_pg = 'KAKAOPAY';
+}
 
 // 주문금액과 결제금액이 일치하는지 체크
 if($tno) {
@@ -460,10 +452,11 @@ if($tno) {
     }
 }
 
-if ($is_member)
+if ($is_member) {
     $od_pwd = $member['mb_password'];
-else
+} else {
     $od_pwd = get_encrypt_string($_POST['od_pwd']);
+}
 
 // 주문번호를 얻는다.
 $od_id = get_session('ss_order_id');
@@ -641,8 +634,9 @@ if(!$result) {
 }
 
 // 회원이면서 포인트를 사용했다면 테이블에 사용을 추가
-if ($is_member && $od_receipt_point)
+if ($is_member && $od_receipt_point) {
     insert_point($member['mb_id'], (-1) * $od_receipt_point, "주문번호 $od_id 결제");
+}
 
 $od_memo = nl2br(htmlspecialchars2(stripslashes($od_memo))) . "&nbsp;";
 
