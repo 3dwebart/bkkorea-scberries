@@ -263,6 +263,8 @@ if (in_array($_POST['ct_status'], $status_cancel)) {
                         $_REQUEST['PartialCancelCode'] = 0;
                         include G5_SHOP_PATH.'/kakaopay/kakaopay_cancel.php';
                         break;
+                    case 'paypal': // wetoz : paypal : 페이팔상점관리자에서만 취소 가능.
+                        break;
                     default:
                         include_once(G5_SHOP_PATH.'/settle_kcp.inc.php');
                         require_once(G5_SHOP_PATH.'/kcp/pp_ax_hub_lib.php');

@@ -36,8 +36,8 @@ if($_POST['de_pg_service'] == 'kcp' && !$_POST['de_card_test'] && ($_POST['de_ic
 //
 // 영카트 default
 //
-$sql = " update {$g5['g5_shop_default_table']}
-            set de_admin_company_owner        = '{$_POST['de_admin_company_owner']}',
+$sql = " UPDATE {$g5['g5_shop_default_table']}
+            SET de_admin_company_owner        = '{$_POST['de_admin_company_owner']}',
                 de_admin_company_name         = '{$_POST['de_admin_company_name']}',
                 de_admin_company_saupja_no    = '{$_POST['de_admin_company_saupja_no']}',
                 de_admin_company_tel          = '{$_POST['de_admin_company_tel']}',
@@ -218,8 +218,8 @@ sql_query($sql);
 sql_query(" update {$g5['config_table']} set cf_use_point = '{$_POST['cf_use_point']}' ");
 
 // LG, 아이코드 설정
-$sql = " update {$g5['config_table']}
-            set cf_sms_use              = '{$_POST['cf_sms_use']}',
+$sql = " UPDATE {$g5['config_table']}
+            SET cf_sms_use              = '{$_POST['cf_sms_use']}',
                 cf_sms_type             = '{$_POST['cf_sms_type']}',
                 cf_icode_id             = '{$_POST['cf_icode_id']}',
                 cf_icode_pw             = '{$_POST['cf_icode_pw']}',
@@ -227,6 +227,15 @@ $sql = " update {$g5['config_table']}
                 cf_icode_server_port    = '{$_POST['cf_icode_server_port']}',
                 cf_lg_mid               = '{$_POST['cf_lg_mid']}',
                 cf_lg_mert_key          = '{$_POST['cf_lg_mert_key']}' ";
+sql_query($sql);
+
+// wetoz : paypal
+$sql = " UPDATE {$g5['g5_shop_default_table']}
+            SET de_paypal_mid       = '{$_POST['de_paypal_mid']}',
+                de_paypal_use       = '{$_POST['de_paypal_use']}',
+                de_paypal_exrate    = '{$_POST['de_paypal_exrate']}',
+                de_paypal_krw       = '{$_POST['de_paypal_krw']}'
+                ";
 sql_query($sql);
 
 goto_url("./configform.php");

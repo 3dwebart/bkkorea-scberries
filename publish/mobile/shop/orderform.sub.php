@@ -587,6 +587,15 @@ if($is_kakaopay_use) {
             $checked = '';
         }
 
+        // wetoz : 페이팔결제 사용
+        include_once(G5_SHOP_PATH.'/settle_paypal.inc.php');
+        include_once(G5_SHOP_PATH.'/paypal/orderform.php');
+        if ($default['de_paypal_use']) {
+            $multi_settle++;
+            echo '<li><input type="radio" id="od_settle_paypal" name="od_settle_case" value="paypal" '.$checked.'> <label for="od_settle_paypal">paypal</label></li>'.PHP_EOL;
+            $checked = '';
+        }
+
         // PG 간편결제
         if($default['de_easy_pay_use']) {
             switch($default['de_pg_service']) {
@@ -802,9 +811,8 @@ $(function() {
         calculate_total_price();
         $("#cp_frm").remove();
         $cp_btn_el.text("변경").addClass("cp_mod").focus();
-        if(!$cp_row_el.find(".cp_cancel").length) { // jQuery 3.x is gone size( )
+        if(!$cp_row_el.find(".cp_cancel").size())
             $cp_btn_el.after("<button type=\"button\" class=\"cp_cancel\">취소</button>");
-        }
     });
 
     $(document).on("click", "#cp_close", function() {
@@ -870,9 +878,8 @@ $(function() {
         calculate_order_price();
         $("#od_coupon_frm").remove();
         $("#od_coupon_btn").text("변경").focus();
-        if(!$("#od_coupon_cancel").length) { // jQuery 3.x is gone size( )
+        if(!$("#od_coupon_cancel").size())
             $("#od_coupon_btn").after("<button type=\"button\" id=\"od_coupon_cancel\" class=\"cp_cancel1\">취소</button>");
-        }
     });
 
     $(document).on("click", "#od_coupon_close", function() {
@@ -930,9 +937,8 @@ $(function() {
         calculate_order_price();
         $("#sc_coupon_frm").remove();
         $("#sc_coupon_btn").text("변경").focus();
-        if(!$("#sc_coupon_cancel").length) { // jQuery 3.x is gone size( )
+        if(!$("#sc_coupon_cancel").size())
             $("#sc_coupon_btn").after("<button type=\"button\" id=\"sc_coupon_cancel\" class=\"cp_cancel1\">취소</button>");
-        }
     });
 
     $(document).on("click", "#sc_coupon_close", function() {
@@ -1059,7 +1065,7 @@ function calculate_total_price()
     <?php if($oc_cnt > 0) { ?>
     $("input[name=od_cp_id]").val("");
     $("#od_cp_price").text(0);
-    if($("#od_coupon_cancel").length) { // jQuery 3.x is gone size( )
+    if($("#od_coupon_cancel").size()) {
         $("#od_coupon_btn").text("쿠폰적용");
         $("#od_coupon_cancel").remove();
     }
@@ -1067,7 +1073,7 @@ function calculate_total_price()
     <?php if($sc_cnt > 0) { ?>
     $("input[name=sc_cp_id]").val("");
     $("#sc_cp_price").text(0);
-    if($("#sc_coupon_cancel").length) { // jQuery 3.x is gone size( )
+    if($("#sc_coupon_cancel").size()) {
         $("#sc_coupon_btn").text("쿠폰적용");
         $("#sc_coupon_cancel").remove();
     }
@@ -1156,9 +1162,8 @@ function calculate_tax()
         }
     });
 
-    if($("input[name=od_temp_point]").length) { // jQuery 3.x is gone size( )
+    if($("input[name=od_temp_point]").size())
         temp_point = parseInt($("input[name=od_temp_point]").val());
-    }
 
     tot_mny += (send_cost + send_cost2 - od_coupon - send_coupon - temp_point);
     if(tot_mny < 0) {
@@ -1216,6 +1221,35 @@ function pay_approval()
         getTxnId(pf);
         return false;
     }
+
+    // wetoz : paypal {
+    if (settle_method == "paypal") {
+        
+        pf.pl_amount.value = f.good_mny.value;
+        var order_data = $(pf).serialize();
+        var save_result = "";
+        $.ajax({
+            type: "POST",
+            data: order_data,
+            url: g5_url+"/shop/ajax.orderdatasave.php",
+            cache: false,
+            async: false,
+            success: function(data) {
+                save_result = data;
+            }
+        });
+
+        if(save_result) {
+            alert(save_result);
+            return false;
+        }
+
+        pf.action = "<?php echo G5_SHOP_URL?>/paypal/pay_call.php";
+        pf.submit();
+
+        return false;
+    }
+    // } wetoz : paypal
 
     var form_order_method = '';
 
@@ -1359,6 +1393,39 @@ function forderform_check()
     // 금액체크
     if(!payment_check(f))
         return false;
+
+    // wetoz : paypal {
+    if (settle_method == "paypal") {
+        
+        var od_price = parseInt(f.od_price.value);
+        var send_cost = parseInt(f.od_send_cost.value);
+        var send_cost2 = parseInt(f.od_send_cost2.value);
+        var send_coupon = parseInt(f.od_send_coupon.value);
+        f.pl_amount.value = od_price + send_cost + send_cost2 - send_coupon - temp_point;
+        var order_data = $(f).serialize();
+        var save_result = "";
+        $.ajax({
+            type: "POST",
+            data: order_data,
+            url: g5_url+"/shop/ajax.orderdatasave.php",
+            cache: false,
+            async: false,
+            success: function(data) {
+                save_result = data;
+            }
+        });
+
+        if(save_result) {
+            alert(save_result);
+            return false;
+        }
+        
+        f.action = "<?php echo G5_SHOP_URL?>/paypal/pay_call.php";
+        f.submit();
+
+        return false;
+    }
+    // } wetoz : paypal
 
     if(settle_method != "무통장" && f.res_cd.value != "0000") {
         alert("결제등록요청 후 주문해 주십시오.");
