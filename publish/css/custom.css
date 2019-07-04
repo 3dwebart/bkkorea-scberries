@@ -231,7 +231,8 @@ a.btn_cancel { padding-top: 0; padding-bottom: 0; }
 .custom-checkbox input.custom-chk:checked + .box:after { top: -9px;  }
 .custom-checkbox .text { padding: 0 7px; }
 /* END :: Components */
-
+.flex-direction-column{flex-direction: column;}
+.justify-content-space-between{justify-content: space-between;}
 #tnb, #tnb ul, #hd, #hd_wrapper, #hd_menu, #wrapper, #container, #ft, #ft .ft_wr { width: 100%; min-width: 100% }
 #wrapper { margin: 0; }
 
