@@ -4,6 +4,12 @@ if (!defined('_GNUBOARD_')) exit;
 // 품목별 재화등에 관한 상품요약 정보
 $item_info = array(
     "wear"=>array(
+        "title"=>"상세페이지 참조",
+        "article"=>array(
+            "content"=>array("상세페이지 참조", ""),
+        )
+    ),
+    "wear"=>array(
         "title"=>"의류",
         "article"=>array(
             "material"=>array("제품소재", "섬유의 조성 또는 혼용률을 백분율로 표시, 기능성인 경우 성적서 또는 허가서"),

@@ -122,7 +122,13 @@ function event_latest($ev_id = false) {
 	return $html;
 }
 
-function main_deco_banner($type = 0, $cate = 0) {
+function main_deco_banner($type = 0, $cate = 0, $ver = 'pc') {
+	if($ver == 'both') {
+		$addWhere = " AND bn_device = 'both'";
+	} else {
+		// PC 버전 혹은 모바일 버전중에 하나일 때
+		$addWhere = " AND (bn_device = 'both' OR bn_device = '".$ver."')";
+	}
 	$sql = "SELECT count(bn_id) AS cnt
 			  FROM g5_shop_banner
 			 WHERE bn_position = '메인꾸밈' 
@@ -135,24 +141,31 @@ function main_deco_banner($type = 0, $cate = 0) {
 			  FROM g5_shop_banner
 			 WHERE bn_position = '메인꾸밈' 
 			   AND bn_item_type = '$type' 
-			   AND bn_item_cate = '$cate'";
+			   AND bn_item_cate = '$cate'".$addWhere;
 	$res = sql_query($sql);
 	$html = '';
 	if($cnt == 0) {
 		$html .= '배너가 없습니다.';
 	} else {
 		while ($row = sql_fetch_array($res)) {
-			if(empty($row['bn_url']) || $row['bn_url'] == 'http://' || $row['bn_url'] == 'https://') {
-				$html .= "";
-			} else {
-				$html .= "<a href='".$row['bn_url']."'>";
-			}
-			$html .= "<div class='mb-4'>";
-			$html .= "<img src='".G5_DATA_URL."/banner/".$row['bn_id']."' alt='' class='img-fluid' />";
-			$html .= "</div>";
-			if(empty($row['bn_url']) || $row['bn_url'] == 'http://' || $row['bn_url'] == 'https://') {
-				$html .= "";
-			} else {
+			if ($ver == 'pc') {
+				if(empty($row['bn_url']) || $row['bn_url'] == 'http://' || $row['bn_url'] == 'https://') {
+					$html .= "";
+				} else {
+					$html .= "<a href='".$row['bn_url']."'>";
+				}
+				$html .= "<div class='mb-4'>";
+				$html .= "<img src='".G5_DATA_URL."/banner/".$row['bn_id']."' alt='' class='img-fluid' />";
+				$html .= "<span class='sound_only'>DEVICE : ".G5_IS_MOBILE.$device."</span>";
+				$html .= "</div>";
+				if(empty($row['bn_url']) || $row['bn_url'] == 'http://' || $row['bn_url'] == 'https://') {
+					$html .= "";
+				} else {
+					$html .= "</a>";
+				}
+			} else if($ver == 'mobile') {
+				$html .= "<a href='".G5_SHOP_URL."/listtype.php?type=".$row['bn_item_type']."'>";
+				$html .= "<img src='".G5_DATA_URL."/banner/".$row['bn_id']."' alt='' class='img-fluid' />";
 				$html .= "</a>";
 			}
 		}

@@ -94,13 +94,15 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
     </tr>
     <?php } ?>
     <tr>
-        <th>이벤트 타입</th>
+        <th scope="row"><label for="ev_kind">이벤트 종류</label></th>
         <td>
-            <input type="radio" name="ev_type" id="ev_type1"> <label for="ev_type1">아이템형</label>
-            <input type="radio" name="ev_type" id="ev_type2"> <label for="ev_type2">페이지형</label>
+            <select name="ev_kind" id="ev_kind">
+                <option value="0"<?php echo ($ev['ev_kind'] == 0) ? ' selected' : ''; ?>>리스트형</option>
+                <option value="1"<?php echo ($ev['ev_kind'] == 1) ? ' selected' : ''; ?>>페이지형</option>
+            </select>
         </td>
     </tr>
-    <tr>
+    <tr class="ev-list">
         <th scope="row"><label for="ev_skin">출력스킨</label></th>
         <td>
             <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', G5_SHOP_SKIN_PATH).'/list.*.skin.php 입니다.'.PHP_EOL.G5_SHOP_DIR.'/event.php?ev_id=1234567890&amp;skin=userskin.php 처럼 직접 만든 스킨을 사용할 수도 있습니다.'); ?>
@@ -109,13 +111,45 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
             </select>
         </td>
     </tr>
-    <tr>
+    <tr class="ev-list">
         <th scope="row"><label for="ev_mobile_skin">모바일 출력스킨</label></th>
         <td>
             <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', G5_MSHOP_SKIN_PATH).'/list.*.skin.php 입니다.'.PHP_EOL.G5_SHOP_DIR.'/event.php?ev_id=1234567890&amp;skin=userskin.php 처럼 직접 만든 스킨을 사용할 수도 있습니다.'); ?>
             <select name="ev_mobile_skin" id="ev_mobile_skin">
                 <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", G5_MSHOP_SKIN_PATH, $ev['ev_mobile_skin']); ?>
             </select>
+        </td>
+    </tr>
+    <tr class="ev-page">
+        <th scope="row"><label for="co_id">이벤트 사용 페이지 선택</label></th>
+        <td>
+            <?php
+                $co_sql = "SELECT co_id, co_subject FROM {$g5['content_table']} WHERE co_kind = 1";
+                $co_res = sql_query($co_sql);
+                $co_cnt = sql_num_rows($co_res);
+                if($co_cnt > 0) {
+            ?>
+            <select name="co_id" id="co_id">
+                <option value="">생성된 페이지 없음</option>
+                <?php
+                    while ($co_row = sql_fetch_array($co_res)) {
+                ?>
+                <option value="<?php echo $co_row['co_id']; ?>"<?php echo ($co_row['co_id'] == $ev['co_id']) ? ' selected' : ''; ?>><?php echo $co_row['co_subject']; ?></option>
+                <?php
+                    }
+                ?>
+            </select>
+            <?php
+                } else {
+            ?>
+            <div style="line-height: 1.2; text-align: center; height: 120px; display: flex; align-items: center; justify-content: center;flex-direction: column;">
+                <span>이벤트용 페이지가 없습니다.</span><br />
+                <span>페이지 생성하러 가시겠습니까?</span><br />
+                <a href="<?php echo G5_ADMIN_URL; ?>/contentform.php">페이지 생성하기</a>
+            </div>
+            <?php
+                }
+            ?>
         </td>
     </tr>
     <tr>

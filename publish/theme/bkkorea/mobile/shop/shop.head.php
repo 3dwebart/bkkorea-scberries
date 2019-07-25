@@ -17,7 +17,7 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
     <?php if(defined('_INDEX_')) { // index에서만 실행
         include G5_MOBILE_PATH.'/newwin.inc.php'; // 팝업레이어
     } ?>
-<!--
+    <!--
     <ul id="hd_mb">
         <li><a href="<?php echo G5_URL; ?>/">커뮤니티</a></li>
         <?php if ($is_member) { ?>
@@ -33,7 +33,7 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         <?php } ?>
         <li><a href="<?php echo G5_SHOP_URL; ?>/mypage.php">마이페이지</a></li>
     </ul>
--->
+    -->
     <div id="hd_wr" class="mobile-header fixed">
         <button type="button" id="btn_hdcate"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">분류</span></button>
         <div id="logo"><a href="<?php echo G5_SHOP_URL; ?>/"><img src="<?php echo G5_DATA_URL; ?>/common/mobile_logo_img" alt="<?php echo $config['cf_title']; ?> 메인"></a></div>

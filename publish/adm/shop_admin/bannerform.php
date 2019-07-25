@@ -110,9 +110,6 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 		<th scope="row"><label for="bn_item_type">노출 타입</label></th>
 		<td>
 			<select name="bn_item_type" id="bn_item_type">
-				<option value="0" <?php echo get_selected($bn['bn_item_type'], '0'); ?>>
-					타입선택
-				</option>
 				<option value="1" <?php echo get_selected($bn['bn_item_type'], '1'); ?>>
 					히트상품
 				</option>
@@ -127,6 +124,9 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 				</option>
 				<option value="5" <?php echo get_selected($bn['bn_item_type'], '5'); ?>>
 					할인상품
+				</option>
+				<option value="0" <?php echo get_selected($bn['bn_item_type'], '0'); ?>>
+					카테고리
 				</option>
 		</select>
 		</td>

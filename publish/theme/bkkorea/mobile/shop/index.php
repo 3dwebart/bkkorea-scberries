@@ -106,6 +106,8 @@ var swiper = new Swiper('.swiper-container', {
             </a>
         </h2>
         <?php
+        main_deco_banner(3,0,'mobile');
+
         $list = new item_list();
         $list->set_mobile(true);
         $list->set_type(3);

@@ -26,6 +26,9 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 <!-- 메인이미지 시작 { -->
 <?php //echo display_banner('메인', 'mainbanner.10.skin.php'); ?>
 <!-- } 메인이미지 끝 -->
+<h3>DEVICE :: <?php echo $device; ?></h3>
+<div><?php print_r($_COOKIE); ?></div>
+<div><?php echo G5_IS_MOBILE; ?></div>
 <div class="row mb-4">
 	<div class="col-6">
 		<?php echo event_latest('1543996122'); ?>
@@ -71,7 +74,7 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 		<a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=3" class="more"><i class="fa fa-plus"></i> more</a>
 	</header>
 	<?php
-		main_deco_banner(3, 0);
+		main_deco_banner(3, 0, 'pc');
 
 		$list = new item_list();
 		$list->set_type(3);
@@ -97,7 +100,7 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 		<a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=5" class="more"><i class="fa fa-plus"></i> more</a>
 	</header>
 	<?php
-		main_deco_banner(5, 0);
+		main_deco_banner(5, 0, 'pc');
 
 		$list = new item_list();
 		$list->set_type(5);
@@ -122,7 +125,7 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 		<a href="<?php echo G5_SHOP_URL; ?>/listtype.php?type=1" class="more"><i class="fa fa-plus"></i> more</a>
 	</header>
 	<?php
-		main_deco_banner(1, 0);
+		main_deco_banner(1, 0, 'pc');
 
 		$list = new item_list();
 		$list->set_type(1);
@@ -246,6 +249,27 @@ include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 	});
 })(jQuery);
 </script>
+<section class="sct_wrap">
+<?php
+main_deco_banner(0, 20, 'pc');
+
+$list = new item_list();
+$list->set_category('20', 1);
+$list->set_list_mod(4);
+$list->set_list_row(1);
+$list->set_img_size(560, 560);
+$list->set_list_skin(G5_SHOP_SKIN_PATH.'/list.11.skin.php');
+$list->set_view('it_img', true);
+$list->set_view('it_id', true);
+$list->set_view('it_name', true);
+$list->set_view('it_basic', true);
+$list->set_view('it_cust_price', true);
+$list->set_view('it_price', true);
+$list->set_view('it_icon', true);
+$list->set_view('sns', true);
+echo $list->run();
+?>
+</section>
 <div class="sct_wrap">
 	<header class="cate-title d-flex space-between">
 		<h2>INSTAGRAM</h2>
