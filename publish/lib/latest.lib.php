@@ -114,9 +114,15 @@ function event_latest($ev_id = false) {
 		$sql = "SELECT * FROM g5_shop_event WHERE ev_id = '$ev_id'";
 		$row = sql_fetch($sql);
 		$html = "";
-		$html .= "<a href='".G5_SHOP_URL."/event.php?ev_id=".$ev_id."' class='d-inline-block'>";
-		$html .= "<img src='".G5_DATA_URL."/event/".$row['ev_id']."_m' alt='".$row['ev_subject']."' class='img-fluid' />";
-		$html .= "</a>";
+		if($row['ev_kind'] == 0) {
+			$html .= "<a href='".G5_SHOP_URL."/event.php?ev_id=".$ev_id."' class='d-inline-block'>";
+			$html .= "<img src='".G5_DATA_URL."/event/".$row['ev_id']."_m' alt='".$row['ev_subject']."' class='img-fluid' />";
+			$html .= "</a>";
+		} else if($row['ev_kind'] == 1) {
+			$html .= "<a href='".G5_BBS_URL."/content.php?co_id=".$row['co_id']."' class='d-inline-block'>";
+			$html .= "<img src='".G5_DATA_URL."/event/".$row['ev_id']."_m' alt='".$row['ev_subject']."' class='img-fluid' />";
+			$html .= "</a>";
+		}
 	}
 
 	return $html;
